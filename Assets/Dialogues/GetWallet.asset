@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fc788fe28a1947c5906bf24c0472406, type: 3}
-  m_Name: MainDialogue 1
+  m_Name: GetWallet
   m_EditorClassIdentifier: 
   Conversations:
   - ID: 0
-    Name: Welcome
-    FirstMessage: 0
-  - ID: 0
     Name: IntroduceWallet
-    FirstMessage: 4
+    FirstMessage: 0
   Speakers:
   - ID: 0
     Name: Sapotezos
@@ -29,40 +26,12 @@ MonoBehaviour:
     SpeakerName: Sapotezos
     PreviousMessage: 0
     NextMessage: 1
-    MessageText: Welcome to the fantastic world of Tezos!
+    MessageText: The first thing you'll ned is a [WALLET].
     Clip: {fileID: 0}
   - ID: 1
     Speaker: 0
     SpeakerName: Sapotezos
     PreviousMessage: 0
-    NextMessage: 2
-    MessageText: My name is Sapotezos.
-    Clip: {fileID: 0}
-  - ID: 2
-    Speaker: 0
-    SpeakerName: Sapotezos
-    PreviousMessage: 1
-    NextMessage: 3
-    MessageText: I'll be your guide in this adventure....
-    Clip: {fileID: 0}
-  - ID: 3
-    Speaker: 0
-    SpeakerName: Sapotezos
-    PreviousMessage: 2
-    NextMessage: -1
-    MessageText: ...where you will learn how to use Tezos.
-    Clip: {fileID: 0}
-  - ID: 4
-    Speaker: 0
-    SpeakerName: Sapotezos
-    PreviousMessage: 2
-    NextMessage: 0
-    MessageText: The first thing you'll ned is a [WALLET].
-    Clip: {fileID: 0}
-  - ID: 5
-    Speaker: 0
-    SpeakerName: Sapotezos
-    PreviousMessage: 2
     NextMessage: -1
     MessageText: Now go get your [[WALLET]
     Clip: {fileID: 0}

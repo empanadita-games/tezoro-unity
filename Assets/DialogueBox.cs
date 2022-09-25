@@ -10,7 +10,7 @@ public class DialogueBox : MonoBehaviour
 {
     public TextMeshPro nameField;
     public TextMeshPro messageField;
-    public QD_Dialogue dialogue;
+    public QD_DialogueHandler handler;
     public int conversationNr;
     
     private void Start()

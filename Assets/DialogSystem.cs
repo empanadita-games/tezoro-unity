@@ -26,8 +26,9 @@ namespace QuantumTek.QuantumDialogue.Demo
             else Destroy(this);
         }
 
-        public void StartConversation(string conversation)
+        public void StartConversation(string conversation, QD_DialogueHandler newhandler)
         {
+            handler = newhandler;
             handler.SetConversation(conversation);
             SetText();
         }

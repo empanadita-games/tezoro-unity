@@ -9,8 +9,8 @@ using UnityEngine.UI;
 
 public class DialogueBox : MonoBehaviour
 {
-    public TextMeshPro nameField;
-    public TextMeshPro messageField;
+    public TextMeshProUGUI nameField;
+    public TextMeshProUGUI messageField;
     public QD_DialogueHandler handler;
     public DialogSystem dialogSystem;
     public int conversationNr;

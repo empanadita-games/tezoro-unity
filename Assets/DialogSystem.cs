@@ -8,8 +8,8 @@ namespace QuantumTek.QuantumDialogue.Demo
     public class DialogSystem : MonoBehaviour
     {
         public QD_DialogueHandler handler;
-        public TextMeshPro speakerName;
-        public TextMeshPro messageText;
+        public TextMeshProUGUI speakerName;
+        public TextMeshProUGUI messageText;
         public Transform choices;
         public TextMeshPro choiceTemplate;
 

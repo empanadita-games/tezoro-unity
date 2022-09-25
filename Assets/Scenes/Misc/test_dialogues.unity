@@ -5473,8 +5473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b23a3f792272f4896001fc5b0de314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1444126196}
-  parallaxEffect: 0.5
 --- !u!1 &1586910623
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,6 +6154,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.35585
+      objectReference: {fileID: 0}
+    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -1.3007
+      objectReference: {fileID: 0}
+    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.05747509
+      objectReference: {fileID: 0}
+    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.112149954
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093555342094719997, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1997621757}
     - target: {fileID: 3522487943853859181, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6244,6 +6262,22 @@ PrefabInstance:
       propertyPath: sapo
       value: 
       objectReference: {fileID: 527159606148107254}
+    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.35585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -3.2174
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.05747509
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.4883
+      objectReference: {fileID: 0}
     - target: {fileID: 7574804024013411684, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
       propertyPath: m_Name
       value: DialogueBox

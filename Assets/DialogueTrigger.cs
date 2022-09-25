@@ -15,5 +15,6 @@ public class DialogueTrigger : MonoBehaviour
         dialogueBox.dialogSystem.StartConversation(dialogueBox.handler.dialogue.Conversations[dialogueBox.conversationNr].Name, dialogueBox.handler);
         dialogueBox.dialogSystem.messageText = dialogueBox.messageField;
         dialogueBox.dialogSystem.speakerName = dialogueBox.nameField;
+        gameObject.SetActive(false);
     }
 }

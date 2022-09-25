@@ -7,8 +7,6 @@ namespace QuantumTek.QuantumDialogue.Demo
 {
     public class DialogSystem : MonoBehaviour
     {
-        public static DialogSystem instance;
-        
         public QD_DialogueHandler handler;
         public TextMeshPro speakerName;
         public TextMeshPro messageText;
@@ -20,11 +18,8 @@ namespace QuantumTek.QuantumDialogue.Demo
 
         private bool ended;
 
-        private void Awake()
-        {
-            if (instance == null) instance = this;
-            else Destroy(this);
-        }
+        public GameObject dialogBoxGO;
+        public Sapotezos sapo;
 
         public void StartConversation(string conversation, QD_DialogueHandler newhandler)
         {
@@ -44,7 +39,7 @@ namespace QuantumTek.QuantumDialogue.Demo
                 return;
 
             // Check if the space key is pressed and the current message is not a choice
-            if (handler.currentMessageInfo.Type == QD_NodeType.Message && (Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0)))
+            if (handler.currentMessageInfo.Type == QD_NodeType.Message && (Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.C)))
                 Next();
         }
 
@@ -135,7 +130,11 @@ namespace QuantumTek.QuantumDialogue.Demo
             SetText();
             // End if there is no next message
             if (handler.currentMessageInfo.ID < 0)
+            {
                 ended = true;
+                dialogBoxGO.SetActive(false);
+                sapo.FadeOut();
+            }
         }
 
         public void Choose(int choice)

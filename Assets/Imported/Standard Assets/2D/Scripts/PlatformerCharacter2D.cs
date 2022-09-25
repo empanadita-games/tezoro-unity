@@ -12,10 +12,12 @@ namespace UnityStandardAssets._2D
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
-        private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
+        [SerializeField] private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
+        [SerializeField] private Transform m_CeilingCheck;   // A position marking where to check for ceilings
+       
         const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
         private bool m_Grounded;            // Whether or not the player is grounded.
-        private Transform m_CeilingCheck;   // A position marking where to check for ceilings
+        private bool m_Falling;            // Whether or not the player is grounded.
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
@@ -24,8 +26,6 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             // Setting up references.
-            m_GroundCheck = transform.Find("GroundCheck");
-            m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
@@ -47,6 +47,16 @@ namespace UnityStandardAssets._2D
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+
+            // Set the fall animation
+            if (m_Rigidbody2D.velocity.y <= 0 && !m_Grounded)
+            {
+                m_Falling = true;
+            }
+            else
+            {
+                m_Falling = false;
+            }
         }
 
 
@@ -97,6 +107,15 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            }
+
+            if (m_Falling)
+            {
+                m_Anim.SetBool("Falling", true);
+            }
+            else
+            {
+                m_Anim.SetBool("Falling", false);
             }
         }
 

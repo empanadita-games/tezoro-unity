@@ -12,7 +12,7 @@ public class DialogueTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         dialogueBox.gameObject.SetActive(true);
-        DialogSystem.instance.StartDialogue(dialogueBox.dialogue.Conversations[dialogueBox.conversationNr].Name);
+        DialogSystem.instance.StartConversation(dialogueBox.dialogue.Conversations[dialogueBox.conversationNr].Name);
         DialogSystem.instance.messageText = dialogueBox.messageField;
         DialogSystem.instance.speakerName = dialogueBox.nameField;
     }

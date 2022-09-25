@@ -9,25 +9,16 @@ public class Rabbit : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rb;
 
-    private bool inIdle;
-
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
         if (Vector2.Distance(transform.position, depredator.position) < distanceFromDepredator)
         {
             EscapeToRight();
-            inIdle = false;
         }
         else 
         {
-            if(!inIdle)
-                StartCoroutine(IdleCoroutine());
+            Idle();
         }
 
         anim.SetFloat("vSpeed", rb.velocity.x);
@@ -49,23 +40,5 @@ public class Rabbit : MonoBehaviour
         theScale.x = 1;
         transform.localScale = theScale;
     }
-
-    private IEnumerator IdleCoroutine()
-    {
-        rb.velocity = Vector2.zero;
-        Vector3 theScale = transform.localScale;
-        theScale.x = 1;
-        transform.localScale = theScale;
-
-        while (inIdle)
-        {
-            anim.SetBool("Eating", false);
-            yield return new WaitForSeconds(2f);
-            anim.SetBool("Eating",true);
-        }
-
-        anim.SetBool("Eating", false);
-    }
-
 
 }

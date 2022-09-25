@@ -6154,22 +6154,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -0.35585
-      objectReference: {fileID: 0}
-    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -1.3007
-      objectReference: {fileID: 0}
-    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.05747509
-      objectReference: {fileID: 0}
-    - target: {fileID: 242099787580353954, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.112149954
-      objectReference: {fileID: 0}
     - target: {fileID: 3093555342094719997, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -6262,22 +6246,6 @@ PrefabInstance:
       propertyPath: sapo
       value: 
       objectReference: {fileID: 527159606148107254}
-    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -0.35585
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -3.2174
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.05747509
-      objectReference: {fileID: 0}
-    - target: {fileID: 4780232123914985234, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.4883
-      objectReference: {fileID: 0}
     - target: {fileID: 7574804024013411684, guid: 9eaefb280675ff3429b47fa724e7ce7b, type: 3}
       propertyPath: m_Name
       value: DialogueBox

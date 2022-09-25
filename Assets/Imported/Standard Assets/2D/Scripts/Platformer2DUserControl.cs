@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -10,7 +11,9 @@ namespace UnityStandardAssets._2D
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 
-        public bool canMove = true;
+
+       [SerializeField] private bool isInputBlocked;
+
 
         private void Awake()
         {
@@ -20,7 +23,9 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            if (!m_Jump && canMove)
+            if (isInputBlocked) return;
+
+            if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
@@ -30,13 +35,38 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-            if (!canMove) return;;
+            if (isInputBlocked) return;
+
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             // Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
             m_Jump = false;
+        }
+
+        public void BlockInput()
+        {
+            isInputBlocked = true;
+        }
+
+        public void UnBlocknput()
+        {
+            isInputBlocked = true;
+        }
+
+        public void BlockInputByTime(float duration)
+        {
+            if (isInputBlocked) return;
+
+            StartCoroutine(BlockInputByTimeCoroutine(duration));
+        }
+
+        private IEnumerator BlockInputByTimeCoroutine(float duration)
+        {
+            BlockInput();
+            yield return new WaitForSeconds(duration);
+            UnBlocknput();
         }
     }
 }

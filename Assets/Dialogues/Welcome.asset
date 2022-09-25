@@ -16,9 +16,6 @@ MonoBehaviour:
   - ID: 0
     Name: Welcome
     FirstMessage: 0
-  - ID: 1
-    Name: IntroduceWallet
-    FirstMessage: 4
   Speakers:
   - ID: 0
     Name: Sapotezos

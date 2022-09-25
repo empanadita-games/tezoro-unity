@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parallax : MonoBehaviour
+public class Parallax_old : MonoBehaviour
 {
 	Transform cam; // Camera reference (of its transform)
 	Vector3 previousCamPos;

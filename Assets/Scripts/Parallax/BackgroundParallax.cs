@@ -6,15 +6,16 @@ public class BackgroundParallax : MonoBehaviour
 {
     [SerializeField] private float parallaxEffect;
 
-    private float lenght;
+    private float length;
     private float startPos;
     private GameObject cam;
 
     void Start()
     {
-        cam = GameObject.Find("CM vcam1");//TO DO: Mejorar esto.
+      //cam = GameObject.Find("CM vcam1");//TO DO: Mejorar esto.
+        cam = Camera.main.gameObject;//TO DO: Mejorar esto.
         startPos = transform.position.x;
-        lenght = GetComponent<SpriteRenderer>().bounds.size.x;
+        length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void Update()
@@ -23,13 +24,13 @@ public class BackgroundParallax : MonoBehaviour
         float distance = (cam.transform.position.x * parallaxEffect);
         transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
         
-        if(temp > startPos + lenght)
+        if(temp > startPos + length)
         {
-            startPos +=lenght;
+            startPos += length;
         }
-        else if( temp < startPos - lenght)
+        else if( temp < startPos - length)
         {
-            startPos -= lenght;
+            startPos -= length;
         }
     }
 }

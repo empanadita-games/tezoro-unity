@@ -11,7 +11,8 @@ public class DialogueBox : MonoBehaviour
     public TextMeshPro nameField;
     public TextMeshPro messageField;
     public QD_Dialogue dialogue;
-
+    public int conversationNr;
+    
     private void Start()
     {
         gameObject.SetActive(false);

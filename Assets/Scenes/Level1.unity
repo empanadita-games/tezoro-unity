@@ -4113,6 +4113,10 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 11400000, guid: 74097e39b161d5b4b85a68c4982beef2, type: 2}
+    - target: {fileID: 2791244681104812710, guid: c91333a8855e7da4eb929a129315463e, type: 3}
+      propertyPath: conversationNr
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4872956821221993799, guid: c91333a8855e7da4eb929a129315463e, type: 3}
       propertyPath: m_fontSize
       value: 2

@@ -43,7 +43,7 @@ namespace QuantumTek.QuantumDialogue.Demo
                 return;
 
             // Check if the space key is pressed and the current message is not a choice
-            if (handler.currentMessageInfo.Type == QD_NodeType.Message && Input.GetKeyUp(KeyCode.Space))
+            if (handler.currentMessageInfo.Type == QD_NodeType.Message && (Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0)))
                 Next();
         }
 

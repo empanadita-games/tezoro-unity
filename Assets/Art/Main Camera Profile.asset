@@ -61,12 +61,12 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   ldrLut:
-    overrideState: 0
-    value: {fileID: 2800000, guid: df3c41d26fe95f1428d4a78f1fc0386d, type: 3}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 57308280ef6ecc44b99eb5690e2642d2, type: 3}
     defaultState: 4
   ldrLutContribution:
-    overrideState: 0
-    value: 0.432
+    overrideState: 1
+    value: 0
   temperature:
     overrideState: 1
     value: 0

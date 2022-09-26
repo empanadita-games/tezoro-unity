@@ -701,6 +701,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 153531889005130587, guid: 38b062c24996c414cb48dc0a9b30620a, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 153531889005130587, guid: 38b062c24996c414cb48dc0a9b30620a, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 153531889005130587, guid: 38b062c24996c414cb48dc0a9b30620a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b062c24996c414cb48dc0a9b30620a, type: 3}
 --- !u!4 &1803872162 stripped
@@ -898,13 +910,21 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1803872162}
+    - target: {fileID: 995427065325811694, guid: 6bb9ac25d83409b45bcbaad0904fd76b, type: 3}
+      propertyPath: m_SoftZoneWidth
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 995427065325811694, guid: 6bb9ac25d83409b45bcbaad0904fd76b, type: 3}
+      propertyPath: m_LookaheadSmoothing
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 995427065666154934, guid: 6bb9ac25d83409b45bcbaad0904fd76b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.105946
+      value: -2.1059422
       objectReference: {fileID: 0}
     - target: {fileID: 995427065666154934, guid: 6bb9ac25d83409b45bcbaad0904fd76b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.99999976
+      value: -1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bb9ac25d83409b45bcbaad0904fd76b, type: 3}

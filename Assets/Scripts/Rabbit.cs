@@ -4,15 +4,15 @@ using UnityEngine;
 public class Rabbit : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float distanceFromDepredator = 1f;
-    [SerializeField] private Transform depredator;
+    [SerializeField] private float distanceFromPlayer = 1f;
+    [SerializeField] private Transform player;
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rb;
 
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, depredator.position) < distanceFromDepredator)
+        if (Vector2.Distance(transform.position, player.position) < distanceFromPlayer)
         {
             EscapeToRight();
         }

@@ -8391,8 +8391,8 @@ GameObject:
   - component: {fileID: 3522965067520377837}
   - component: {fileID: 5898262680235866176}
   - component: {fileID: 7503539969250387074}
-  m_Layer: 0
-  m_Name: Piedra_Sprite
+  m_Layer: 6
+  m_Name: ObstacleRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

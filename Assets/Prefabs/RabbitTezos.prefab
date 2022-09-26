@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  distanceFromDepredator: 4
+  distanceFromPlayer: 4
   depredator: {fileID: 0}
   anim: {fileID: 9092217923265180065}
   rb: {fileID: 9092217923265180066}

@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fastSpeed: 15
   distanceTolerance: 4
   player: {fileID: 0}
   rb: {fileID: 9092217923265180066}
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5962851971763533154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b48cb0f2ae5ccd24bb173122be0ae390, type: 3}
   m_Name: 

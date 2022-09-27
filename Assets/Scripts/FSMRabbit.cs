@@ -6,11 +6,12 @@ using UnityEngine;
 public class FSMRabbit : MonoBehaviour
 {
     //FSM
-    public enum PlayerInputs { WPFLEE, WPIDLE, SIDLE, SFLEE, CONVERTING }
+    public enum PlayerInputs { WP_FLEE, WP_IDLE, SIMPLE_IDLE, SIMPLE_FLEE, CONVERTING }
     private EventFSM<PlayerInputs> _myFsm;
 
     //RABBIT
     [SerializeField] private float speed;
+    [SerializeField] private float fastSpeed;
     [SerializeField] private float distanceTolerance = 1f;
     [SerializeField] private Transform player;
     [SerializeField] private Rigidbody2D rb;
@@ -33,29 +34,29 @@ public class FSMRabbit : MonoBehaviour
 
         //creo las transiciones
         StateConfigurer.Create(wpIdle)
-            .SetTransition(PlayerInputs.WPFLEE, wpFlee)
-            .SetTransition(PlayerInputs.SIDLE, simpleIdle)
-            .SetTransition(PlayerInputs.SFLEE, simpleFlee)
+            .SetTransition(PlayerInputs.WP_FLEE, wpFlee)
+            .SetTransition(PlayerInputs.SIMPLE_IDLE, simpleIdle)
+            .SetTransition(PlayerInputs.SIMPLE_FLEE, simpleFlee)
             .SetTransition(PlayerInputs.CONVERTING, converting)
             .Done();
 
         StateConfigurer.Create(wpFlee)
-            .SetTransition(PlayerInputs.WPIDLE, wpIdle)
-            .SetTransition(PlayerInputs.SIDLE, simpleIdle)
-            .SetTransition(PlayerInputs.SFLEE, simpleFlee)
+            .SetTransition(PlayerInputs.WP_IDLE, wpIdle)
+            .SetTransition(PlayerInputs.SIMPLE_IDLE, simpleIdle)
+            .SetTransition(PlayerInputs.SIMPLE_FLEE, simpleFlee)
             .SetTransition(PlayerInputs.CONVERTING, converting)
             .Done();
 
         StateConfigurer.Create(simpleIdle)
-            .SetTransition(PlayerInputs.SFLEE, simpleFlee)
-            .SetTransition(PlayerInputs.WPIDLE, wpIdle)
-            .SetTransition(PlayerInputs.WPFLEE, wpFlee)
+            .SetTransition(PlayerInputs.SIMPLE_FLEE, simpleFlee)
+            .SetTransition(PlayerInputs.WP_IDLE, wpIdle)
+            .SetTransition(PlayerInputs.WP_FLEE, wpFlee)
             .SetTransition(PlayerInputs.CONVERTING, converting)
             .Done();
         StateConfigurer.Create(simpleFlee)
-            .SetTransition(PlayerInputs.SIDLE, simpleIdle)
-            .SetTransition(PlayerInputs.WPIDLE, wpIdle)
-            .SetTransition(PlayerInputs.WPFLEE, wpFlee)
+            .SetTransition(PlayerInputs.SIMPLE_IDLE, simpleIdle)
+            .SetTransition(PlayerInputs.WP_IDLE, wpIdle)
+            .SetTransition(PlayerInputs.WP_FLEE, wpFlee)
             .SetTransition(PlayerInputs.CONVERTING, converting)
             .Done();
         
@@ -66,8 +67,13 @@ public class FSMRabbit : MonoBehaviour
         {
             if (GetXDistance(player) <= distanceTolerance)
             {
-                SendInputToFSM(PlayerInputs.SFLEE);
+                SendInputToFSM(PlayerInputs.SIMPLE_FLEE);
             }
+        };
+        
+        simpleIdle.OnEnter += x =>
+        {
+            Idle();
         };
 
         simpleFlee.OnUpdate += () =>
@@ -75,7 +81,7 @@ public class FSMRabbit : MonoBehaviour
             EscapeToRight();
             if (GetXDistance(player) > distanceTolerance)
             {
-                SendInputToFSM(PlayerInputs.SIDLE);
+                SendInputToFSM(PlayerInputs.SIMPLE_IDLE);
             }
         };
         
@@ -84,11 +90,12 @@ public class FSMRabbit : MonoBehaviour
             LookRight(true);
         };
 
-        simpleIdle.OnEnter += x =>
+        wpIdle.OnUpdate += () =>
         {
             Idle();
+            if (GetXDistance(player) < distanceTolerance * 2) SendInputToFSM(PlayerInputs.WP_FLEE); 
         };
-
+        
         wpFlee.OnUpdate += () =>
         {
             RunToWP();
@@ -98,23 +105,18 @@ public class FSMRabbit : MonoBehaviour
                 if (currentWP >= waypoints.Length)
                     //End of waypoints
                 {
-                    SendInputToFSM(PlayerInputs.SIDLE);
+                    SendInputToFSM(PlayerInputs.SIMPLE_IDLE);
                     currentWP = 0;
                 }
                 else
                 {
                     //Wait to go to next waypoint
-                    SendInputToFSM(PlayerInputs.WPIDLE);
+                    SendInputToFSM(PlayerInputs.WP_IDLE);
                 }
             } 
         };
-        
-        wpIdle.OnUpdate += () =>
-        {
-            Idle();
-        };
-        
-        _myFsm = new EventFSM<PlayerInputs>(simpleIdle);
+
+        _myFsm = new EventFSM<PlayerInputs>(wpIdle);
     }
 
     private void SendInputToFSM(PlayerInputs inp)
@@ -137,7 +139,7 @@ public class FSMRabbit : MonoBehaviour
 
     private void RunToWP()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = transform.right * fastSpeed;
         LookRight(true);
     }
     
@@ -159,7 +161,7 @@ public class FSMRabbit : MonoBehaviour
 
     void LookRight(bool right)
     {
-        //renderer.flipX = !right;
+        //renderer.flipX = !right; //Deberia funcionar con esto sólo, pero si se usa esto se producen cortes en los cambios de animacion
         Vector3 scale = transform.localScale;
         scale.x = (right?-1:1);
         transform.localScale = scale;

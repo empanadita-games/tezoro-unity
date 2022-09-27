@@ -1796,18 +1796,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1803872162}
-    - target: {fileID: 2860190247353891320, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4709480614028516605, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1803872162}
-    - target: {fileID: 4709480614028516605, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4709480614028516605, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 

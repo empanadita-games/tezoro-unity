@@ -1,5 +1,6 @@
 using FSM;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FSMRabbit : MonoBehaviour
@@ -16,6 +17,9 @@ public class FSMRabbit : MonoBehaviour
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private Animator anim;
     
+    //waypoints
+    public GameObject[] waypoints;
+    private int currentWP = 0;
     
     private void Awake()
     {
@@ -60,7 +64,7 @@ public class FSMRabbit : MonoBehaviour
         //PARTE 2: SETEO DE LOS ESTADOS
         simpleIdle.OnUpdate += () =>
         {
-            if (GetXDistance() <= distanceTolerance)
+            if (GetXDistance(player) <= distanceTolerance)
             {
                 SendInputToFSM(PlayerInputs.SFLEE);
             }
@@ -68,22 +72,48 @@ public class FSMRabbit : MonoBehaviour
 
         simpleFlee.OnUpdate += () =>
         {
-            DoSimpleFlee();
-            if (GetXDistance() > distanceTolerance * 1.2f)
+            EscapeToRight();
+            if (GetXDistance(player) > distanceTolerance)
             {
                 SendInputToFSM(PlayerInputs.SIDLE);
             }
         };
+        
+        simpleFlee.OnEnter += x =>
+        {
+            LookRight(true);
+        };
 
         simpleIdle.OnEnter += x =>
         {
-            DoIdle();
+            Idle();
         };
 
+        wpFlee.OnUpdate += () =>
+        {
+            RunToWP();
+            if (GetXDistance(waypoints[currentWP].transform) <= 0.5f)
+            {
+                currentWP += 1;
+                if (currentWP >= waypoints.Length)
+                    //End of waypoints
+                {
+                    SendInputToFSM(PlayerInputs.SIDLE);
+                    currentWP = 0;
+                }
+                else
+                {
+                    //Wait to go to next waypoint
+                    SendInputToFSM(PlayerInputs.WPIDLE);
+                }
+            } 
+        };
+        
         wpIdle.OnUpdate += () =>
         {
-            DoIdle();
+            Idle();
         };
+        
         _myFsm = new EventFSM<PlayerInputs>(simpleIdle);
     }
 
@@ -104,22 +134,27 @@ public class FSMRabbit : MonoBehaviour
         _myFsm.FixedUpdate();
         anim.SetFloat("vSpeed", rb.velocity.x);
     }
-    
-    private void DoSimpleFlee()
+
+    private void RunToWP()
     {
         rb.velocity = transform.right * speed;
         LookRight(true);
     }
-
-    private void DoIdle()
+    
+    private void EscapeToRight()
+    {
+        rb.velocity = transform.right * speed ;
+    }
+    
+    private void Idle()
     {
         rb.velocity = Vector2.zero;
         LookRight(false);
     }
 
-    float GetXDistance()
+    float GetXDistance(Transform target)
     {
-        return Mathf.Abs(transform.position.x - player.position.x);
+        return Mathf.Abs(transform.position.x - target.position.x);
     }
 
     void LookRight(bool right)

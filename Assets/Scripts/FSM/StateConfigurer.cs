@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FSMIA {
+namespace FSM {
 	public class StateConfigurer<T>
     {
 		State<T> instance;

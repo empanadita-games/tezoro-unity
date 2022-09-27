@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FSMIA
+namespace FSM
 {
 	public class Transition<T>
     {

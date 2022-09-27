@@ -159,6 +159,9 @@ public class FSMRabbit : MonoBehaviour
 
     void LookRight(bool right)
     {
-        renderer.flipX = !right;
+        //renderer.flipX = !right;
+        Vector3 scale = transform.localScale;
+        scale.x = (right?-1:1);
+        transform.localScale = scale;
     }
 }

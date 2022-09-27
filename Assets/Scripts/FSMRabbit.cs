@@ -1,5 +1,6 @@
 using FSM;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +22,14 @@ public class FSMRabbit : MonoBehaviour
     //waypoints
     public GameObject[] waypoints;
     private int currentWP = 0;
+    private static readonly int Convert1 = Animator.StringToHash("Convert");
+    private static readonly int VSpeed = Animator.StringToHash("vSpeed");
+
+    [SerializeField] int coinzDropped;
+    [SerializeField]private float coinzInterval;
     
+    public GameObject coin;
+    public GameObject sapo;
     private void Awake()
     {
        //PARTE 1: SETEO INICIAL
@@ -93,12 +101,17 @@ public class FSMRabbit : MonoBehaviour
         wpIdle.OnUpdate += () =>
         {
             Idle();
-            if (GetXDistance(player) < distanceTolerance * 2) SendInputToFSM(PlayerInputs.WP_FLEE); 
+            if (GetXDistance(player) < distanceTolerance * 1.5f) SendInputToFSM(PlayerInputs.WP_FLEE); 
         };
-        
+
+        wpFlee.OnEnter += x =>
+        {
+            StartCoroutine(Coro_DropCoinz(coinzDropped, coinzInterval));
+        };
+
         wpFlee.OnUpdate += () =>
         {
-            RunToWP();
+            RunToWp();
             if (GetXDistance(waypoints[currentWP].transform) <= 0.5f)
             {
                 currentWP += 1;
@@ -113,7 +126,14 @@ public class FSMRabbit : MonoBehaviour
                     //Wait to go to next waypoint
                     SendInputToFSM(PlayerInputs.WP_IDLE);
                 }
-            } 
+            }
+        };
+
+        converting.OnEnter += x =>
+        {
+            rb.velocity = Vector2.zero;
+            LookRight(true);
+            anim.SetTrigger(Convert1);
         };
 
         _myFsm = new EventFSM<PlayerInputs>(wpIdle);
@@ -127,17 +147,17 @@ public class FSMRabbit : MonoBehaviour
     private void Update()
     {
         _myFsm.Update();
-        anim.SetFloat("vSpeed", rb.velocity.x);
-        Debug.Log("state:" +_myFsm.Current.Name);
+        anim.SetFloat(VSpeed, rb.velocity.x);
+        //Debug.Log("state:" +_myFsm.Current.Name);
     }
 
     private void FixedUpdate()
     {
         _myFsm.FixedUpdate();
-        anim.SetFloat("vSpeed", rb.velocity.x);
+        anim.SetFloat(VSpeed, rb.velocity.x);
     }
 
-    private void RunToWP()
+    private void RunToWp()
     {
         rb.velocity = transform.right * fastSpeed;
         LookRight(true);
@@ -165,5 +185,26 @@ public class FSMRabbit : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x = (right?-1:1);
         transform.localScale = scale;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Conversion trigger detected");
+        if (other.CompareTag("Conversion")) SendInputToFSM(PlayerInputs.CONVERTING);
+    }
+
+    public void DestroyAndSpawnSapo()
+    {
+        Instantiate(sapo, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    IEnumerator Coro_DropCoinz(int n, float waitTime)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            Instantiate(coin, transform.position, transform.rotation);
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 }

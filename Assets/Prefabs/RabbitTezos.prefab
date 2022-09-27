@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9092217923265180066}
   - component: {fileID: 9092217923265180065}
   - component: {fileID: 1758436285558100619}
+  - component: {fileID: 4709480614028516605}
   m_Layer: 0
   m_Name: RabbitTezos
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5962851971763533154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b48cb0f2ae5ccd24bb173122be0ae390, type: 3}
   m_Name: 
@@ -145,3 +146,21 @@ MonoBehaviour:
   player: {fileID: 0}
   anim: {fileID: 9092217923265180065}
   rb: {fileID: 9092217923265180066}
+--- !u!114 &4709480614028516605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962851971763533154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee9bbee1a7bcaa449e0e0dcd01c85a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  distanceTolerance: 4
+  player: {fileID: 0}
+  rb: {fileID: 9092217923265180066}
+  renderer: {fileID: 8696890763037726909}
+  anim: {fileID: 9092217923265180065}

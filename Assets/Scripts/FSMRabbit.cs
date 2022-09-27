@@ -4,107 +4,87 @@ using UnityEngine;
 
 public class FSMRabbit : MonoBehaviour
 {
-    public enum PlayerInputs { MOVE, JUMP, IDLE, DIE }
+    //FSM
+    public enum PlayerInputs { WPFLEE, WPIDLE, SIDLE, SFLEE, CONVERTING }
     private EventFSM<PlayerInputs> _myFsm;
-    private Rigidbody _myRb;
-    public Renderer _myRen;
 
-
+    //RABBIT
+    [SerializeField] private float speed;
+    [SerializeField] private float distanceTolerance = 1f;
+    [SerializeField] private Transform player;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private Animator anim;
+    
+    
     private void Awake()
     {
-        _myRb = gameObject.GetComponent<Rigidbody>();
-
-        //PARTE 1: SETEO INICIAL
-
-        //Creo los estados
-        var idle = new State<PlayerInputs>("IDLE");
-        var moving = new State<PlayerInputs>("Moving");
-        var jumping = new State<PlayerInputs>("Jumping");
-        var die = new State<PlayerInputs>("DIE");
+       //PARTE 1: SETEO INICIAL
+       //Creo los estados
+        var wpFlee = new State<PlayerInputs>("WaypointFlee");
+        var wpIdle = new State<PlayerInputs>("WaypointIdle");
+        var simpleIdle = new State<PlayerInputs>("SimpleIdle");
+        var simpleFlee = new State<PlayerInputs>("SimpleFlee");
+        var converting = new State<PlayerInputs>("Convert");
 
         //creo las transiciones
-        StateConfigurer.Create(idle)
-            .SetTransition(PlayerInputs.MOVE, moving)
-            .SetTransition(PlayerInputs.JUMP, jumping)
-            .SetTransition(PlayerInputs.DIE, die)
-            .Done(); //aplico y asigno
-
-        StateConfigurer.Create(moving)
-            .SetTransition(PlayerInputs.IDLE, idle)
-            .SetTransition(PlayerInputs.JUMP, jumping)
-            .SetTransition(PlayerInputs.DIE, die)
+        StateConfigurer.Create(wpIdle)
+            .SetTransition(PlayerInputs.WPFLEE, wpFlee)
+            .SetTransition(PlayerInputs.SIDLE, simpleIdle)
+            .SetTransition(PlayerInputs.SFLEE, simpleFlee)
+            .SetTransition(PlayerInputs.CONVERTING, converting)
             .Done();
 
-        StateConfigurer.Create(jumping)
-            .SetTransition(PlayerInputs.IDLE, idle)
-            .SetTransition(PlayerInputs.JUMP, jumping)
+        StateConfigurer.Create(wpFlee)
+            .SetTransition(PlayerInputs.WPIDLE, wpIdle)
+            .SetTransition(PlayerInputs.SIDLE, simpleIdle)
+            .SetTransition(PlayerInputs.SFLEE, simpleFlee)
+            .SetTransition(PlayerInputs.CONVERTING, converting)
             .Done();
 
-        //die no va a tener ninguna transición HACIA nada (uno puede morirse, pero no puede pasar de morirse a caminar)
-        //entonces solo lo creo e inmediatamente lo aplico asi el diccionari de transiciones no es nulo y no se rompe nada.
-        StateConfigurer.Create(die).Done();
+        StateConfigurer.Create(simpleIdle)
+            .SetTransition(PlayerInputs.SFLEE, simpleFlee)
+            .SetTransition(PlayerInputs.WPIDLE, wpIdle)
+            .SetTransition(PlayerInputs.WPFLEE, wpFlee)
+            .SetTransition(PlayerInputs.CONVERTING, converting)
+            .Done();
+        StateConfigurer.Create(simpleFlee)
+            .SetTransition(PlayerInputs.SIDLE, simpleIdle)
+            .SetTransition(PlayerInputs.WPIDLE, wpIdle)
+            .SetTransition(PlayerInputs.WPFLEE, wpFlee)
+            .SetTransition(PlayerInputs.CONVERTING, converting)
+            .Done();
+        
+        StateConfigurer.Create(converting).Done();
 
         //PARTE 2: SETEO DE LOS ESTADOS
-        //IDLE
-        idle.OnUpdate += () =>
+        simpleIdle.OnUpdate += () =>
         {
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-                SendInputToFSM(PlayerInputs.MOVE);
-            else if (Input.GetKeyDown(KeyCode.Space))
-                SendInputToFSM(PlayerInputs.JUMP);
+            if (GetXDistance() <= distanceTolerance)
+            {
+                SendInputToFSM(PlayerInputs.SFLEE);
+            }
         };
 
-        //MOVING
-        moving.OnUpdate += () =>
+        simpleFlee.OnUpdate += () =>
         {
-            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
-                SendInputToFSM(PlayerInputs.IDLE);
-            else if (Input.GetKeyDown(KeyCode.Space))
-                SendInputToFSM(PlayerInputs.JUMP);
-        };
-        moving.OnFixedUpdate += () =>
-        {
-            _myRb.velocity += (transform.forward * Input.GetAxis("Vertical") * 20f + transform.right * Input.GetAxis("Horizontal") * 20f) * Time.deltaTime;
-        };
-        moving.OnExit += x =>
-        {
-            //x es el input que recibí, por lo que puedo modificar el comportamiento según a donde estoy llendo
-            if (x != PlayerInputs.JUMP)
-                _myRb.velocity = Vector3.zero;
-        };
-        Action Poisoned = () => { };
-        float currentTime = 0;
-        Poisoned += () =>
-        {
-            Debug.Log("Poisoned");
-            currentTime += Time.deltaTime;
-            if (currentTime >= 5)
-                idle.OnUpdate -= Poisoned;
-        };
-        idle.OnUpdate += Poisoned;
-
-        //JUMPING
-        jumping.OnEnter += x =>
-        {
-            //tambien uso el rigidbody, pero en vez de tener una variable en cada estado, tengo una sola referencia compartida...
-            _myRb.AddForce(transform.up * 10f, ForceMode.Impulse);
-        };
-        jumping.OnUpdate += () =>
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-                SendInputToFSM(PlayerInputs.JUMP);
-        };
-        jumping.GetTransition(PlayerInputs.JUMP).OnTransition += x =>
-        {
-            _myRen.material.color = Color.red;
-        };
-        jumping.GetTransition(PlayerInputs.IDLE).OnTransition += x =>
-        {
-            _myRen.material.color = Color.white;
+            DoSimpleFlee();
+            if (GetXDistance() > distanceTolerance * 1.2f)
+            {
+                SendInputToFSM(PlayerInputs.SIDLE);
+            }
         };
 
-        //con todo ya creado, creo la FSM y le asigno el primer estado
-        _myFsm = new EventFSM<PlayerInputs>(idle);
+        simpleIdle.OnEnter += x =>
+        {
+            DoIdle();
+        };
+
+        wpIdle.OnUpdate += () =>
+        {
+            DoIdle();
+        };
+        _myFsm = new EventFSM<PlayerInputs>(simpleIdle);
     }
 
     private void SendInputToFSM(PlayerInputs inp)
@@ -115,16 +95,35 @@ public class FSMRabbit : MonoBehaviour
     private void Update()
     {
         _myFsm.Update();
+        anim.SetFloat("vSpeed", rb.velocity.x);
+        Debug.Log("state:" +_myFsm.Current.Name);
     }
 
     private void FixedUpdate()
     {
         _myFsm.FixedUpdate();
+        anim.SetFloat("vSpeed", rb.velocity.x);
     }
-
-    private void OnCollisionEnter(Collision collision)
+    
+    private void DoSimpleFlee()
     {
-        SendInputToFSM(PlayerInputs.IDLE);
+        rb.velocity = transform.right * speed;
+        LookRight(true);
     }
 
+    private void DoIdle()
+    {
+        rb.velocity = Vector2.zero;
+        LookRight(false);
+    }
+
+    float GetXDistance()
+    {
+        return Mathf.Abs(transform.position.x - player.position.x);
+    }
+
+    void LookRight(bool right)
+    {
+        renderer.flipX = !right;
+    }
 }

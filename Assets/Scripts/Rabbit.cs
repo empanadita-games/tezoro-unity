@@ -28,17 +28,17 @@ public class Rabbit : MonoBehaviour
     {
         rb.velocity = transform.right * speed;
 
-        Vector3 theScale = transform.localScale;
-        theScale.x = -1;
-        transform.localScale = theScale;
+        Vector3 scale = transform.localScale;
+        scale.x = -1;
+        transform.localScale = scale;
     }
 
     private void Idle()
     {
         rb.velocity = Vector2.zero;
-        Vector3 theScale = transform.localScale;
-        theScale.x = 1;
-        transform.localScale = theScale;
+        Vector3 scale = transform.localScale;
+        scale.x = 1;
+        transform.localScale = scale;
     }
 
 }

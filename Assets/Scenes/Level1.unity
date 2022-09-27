@@ -314,38 +314,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &429454066 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5962851971763533154, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
-  m_PrefabInstance: {fileID: 2042241869338176249}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &429454069 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9092217923265180065, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
-  m_PrefabInstance: {fileID: 2042241869338176249}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &429454070 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 9092217923265180066, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
-  m_PrefabInstance: {fileID: 2042241869338176249}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &429454073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429454066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48cb0f2ae5ccd24bb173122be0ae390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  distanceFromPlayer: 4
-  player: {fileID: 1803872162}
-  anim: {fileID: 429454069}
-  rb: {fileID: 429454070}
 --- !u!1 &597929465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,13 +1792,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2860190247353891320, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1803872162}
+    - target: {fileID: 2860190247353891320, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4709480614028516605, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1803872162}
     - target: {fileID: 4709480614028516605, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709480614028516605, guid: 7902af8c5361112419b4d3c80126844d, type: 3}
       propertyPath: waypoints.Array.data[0]

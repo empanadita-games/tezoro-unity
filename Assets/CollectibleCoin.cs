@@ -6,13 +6,30 @@ using UnityEngine;
 
 public class CollectibleCoin : MonoBehaviour
 {
+    [SerializeField] private LayerMask triggerLayers;
+    [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private bool anim = true;
+
+
     private void Start()
     {
-        transform.DOLocalMoveY(0.2f, 1f).SetLoops(-1, LoopType.Yoyo);
+        if(anim)
+         transform.DOLocalMoveY(0.2f, 1f).SetLoops(-1, LoopType.Yoyo);
+
+        Invoke("DestroyAfterTime", lifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (((1 << other.gameObject.layer) & triggerLayers) == 0) return;
+
         Destroy(gameObject);
     }
+
+
+    private void DestroyAfterTime()
+    {
+        Destroy(gameObject);
+    }
+
 }

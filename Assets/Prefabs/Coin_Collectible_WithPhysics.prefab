@@ -13,7 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3089195937713749381, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
       propertyPath: lifeTime
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089195937713749381, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
+      propertyPath: deathLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7397384357577365976, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
       propertyPath: m_RootOrder
@@ -21,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7397384357577365976, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.785219
       objectReference: {fileID: 0}
     - target: {fileID: 7397384357577365976, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.16600108
       objectReference: {fileID: 0}
     - target: {fileID: 7397384357577365976, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
       propertyPath: m_LocalPosition.z
@@ -67,6 +71,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_Collectible_WithPhysics
       objectReference: {fileID: 0}
+    - target: {fileID: 7397384357577365981, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791244535135309479, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7397384357577365978, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
@@ -91,8 +103,8 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cdc015026524fab46bb9b75e392e8673, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5

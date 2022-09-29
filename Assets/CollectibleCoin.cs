@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CollectibleCoin : MonoBehaviour
 {
-    [SerializeField] private LayerMask triggerLayers;
+    [SerializeField] private LayerMask deathLayers;
     [SerializeField] private float lifeTime = 5f;
     [SerializeField] private bool anim = true;
 
@@ -21,7 +21,14 @@ public class CollectibleCoin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (((1 << other.gameObject.layer) & triggerLayers) == 0) return;
+        if (((1 << other.gameObject.layer) & deathLayers) == 0) return;
+
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (((1 << other.gameObject.layer) & deathLayers) == 0) return;
 
         Destroy(gameObject);
     }

@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68b9d6b37c5c5443b033cfe1419f38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerLayers:
+  deathLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   lifeTime: 10
   anim: 1
 --- !u!58 &8791244535135309479
@@ -134,7 +134,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

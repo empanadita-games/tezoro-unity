@@ -8,10 +8,10 @@ using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
 {
-    [DllImport("__Internal")] 
-        // UNITY -> REACT 
-        // SYNC
-        private static extern void TrySyncWallet ();
+    // UNITY -> REACT 
+    // SYNC
+    [DllImport("__Internal")]
+    private static extern void TrySyncWallet ();
         public void CallTrySyncWallet () {
         #if UNITY_WEBGL == true && UNITY_EDITOR == false
             TrySyncWallet ();

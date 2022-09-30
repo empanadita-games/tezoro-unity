@@ -18,10 +18,11 @@ public class GameController : MonoBehaviour
         #endif
         }
         // //GET TEZOS REACT
-        private static extern void ReactGetTezos (int amount, string walletAddress);
-        public void CallGetTezos (int callAmount) {
+    [DllImport("__Internal")]
+    private static extern void ReactGetTezos (int amount, string walletAddress);
+        public void CallGetTezos (int callAmount, string callWalletAddress) {
         #if UNITY_WEBGL == true && UNITY_EDITOR == false
-            ReactGetTezos (callAmount, walletAddress);
+            ReactGetTezos (callAmount, callWalletAddress);
         #endif
         }
 
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour
         public UnityEvent onWalletSynced;
 
         //THIS METHOD SHOULD BE CALLED FROM REACT
-        public void GetWallet (string address) {
+        public void SetWallet (string address) {
             Debug.Log ($"Sync Succesful. Address: {address}");
             walletAddress = address;
             UIController.instance.walletAddress.text = walletAddress;
@@ -66,7 +67,7 @@ public class GameController : MonoBehaviour
 
             string jsonString = JsonUtility.ToJson(myData);
             
-            UnityWebRequest request = UnityWebRequest.Put(requestURL, jsonString);
+            UnityWebRequest request = UnityWebRequest.Post(requestURL, jsonString);
             request.SetRequestHeader("Content-Type", "application/json");
             Debug.Log("Sending web request:" + requestURL + " " + jsonString);
             yield return request.SendWebRequest();

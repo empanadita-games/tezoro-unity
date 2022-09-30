@@ -10,7 +10,7 @@ public class CollectibleWallet : MonoBehaviour
     
     private void Start()
     {
-        transform.DOLocalMoveY(0.05f, 1f).SetLoops(-1, LoopType.Yoyo);
+        transform.DOMoveY(0.1f, 1f).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

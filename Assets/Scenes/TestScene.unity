@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_Collectible (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8791244535135309479, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
 --- !u!1 &167082332
@@ -1132,6 +1136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walletAddress: 
+  onWalletSynced:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &848434808
 Transform:
   m_ObjectHideFlags: 0
@@ -2130,7 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831091e072870e7428b9712554b08b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slide: {fileID: 0}
+  slide: {fileID: 1886563472}
 --- !u!58 &1474224126
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2141,7 +2148,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2270,7 +2277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5726483864642188166, guid: 2f35d3da795d40145bd2d8a694dfa1b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5046716
+      value: 4.74
       objectReference: {fileID: 0}
     - target: {fileID: 5726483864642188166, guid: 2f35d3da795d40145bd2d8a694dfa1b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2694,6 +2701,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6271021498733314290, guid: af4ed4f33ca290741beee9373363f8b7, type: 3}
   m_PrefabInstance: {fileID: 4805420584002816345}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1886563472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9026242515600973927, guid: af4ed4f33ca290741beee9373363f8b7, type: 3}
+  m_PrefabInstance: {fileID: 4805420584002816345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2234f21cc5e53874e870043a77fd059b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1886597447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,7 +3557,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1079277232197989627, guid: af4ed4f33ca290741beee9373363f8b7, type: 3}
       propertyPath: m_Name
-      value: CreateWallet SlideController
+      value: SlideController CreateWallet
       objectReference: {fileID: 0}
     - target: {fileID: 1079277232197989627, guid: af4ed4f33ca290741beee9373363f8b7, type: 3}
       propertyPath: m_IsActive

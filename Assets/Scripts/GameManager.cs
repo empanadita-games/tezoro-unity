@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGetTezos()
     {
-        GameController.instance.CallGetTezos(tezosCollected);
+        GameController.instance.CallGetTezos(tezosCollected, "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi");
     }
     
     public void StartWebGetTezos()

@@ -3,8 +3,3 @@ mergeInto(LibraryManager.library, {
     window.dispatchReactUnityEvent("TrySyncWallet");
   },
 });
-mergeInto(LibraryManager.library, {
-  GetTezos: function {
-    window.dispatchReactUnityEvent("GetTezos", amount);
-  },
-});

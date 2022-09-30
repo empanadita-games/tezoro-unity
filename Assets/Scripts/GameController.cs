@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
         //RECEIVE WALLET ADDRESS (ALSO CONFIRMATION OF SUCCESFUL SYNC)
         
         public string walletAddress;
+        public UnityEvent onWalletSynced;
 
         //THIS METHOD SHOULD BE CALLED FROM REACT
         public void GetWallet (string address) {
@@ -40,11 +42,14 @@ public class GameController : MonoBehaviour
 
         private void Awake()
         {
-            if (instance==null) instance = this;
+            if (instance == null) instance = this;
             else Destroy(instance);
             DontDestroyOnLoad(this);
+
+            onWalletSynced.AddListener(() => { UIController.instance.walletAddress.text = walletAddress; }
+            );
         }
-        
+
         //WEB REQUEST VERSION OF GETTEZOS
 
         public void WebGetTezos(int amount) => StartCoroutine(Coro_WebGetTezos(amount));

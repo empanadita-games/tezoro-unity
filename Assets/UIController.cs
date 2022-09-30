@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public TextMeshPro walletAddress;
-    public TextMeshPro tezos;
+    public TextMeshProUGUI walletAddress;
+    public TextMeshProUGUI tezos;
 
     public static UIController instance;
 

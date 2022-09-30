@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2391872281568822411}
   - component: {fileID: 6117033611957365438}
+  - component: {fileID: 8412153268486859550}
   m_Layer: 0
   m_Name: CoinTrigger
   m_TagString: Untagged
@@ -48,6 +49,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8412153268486859550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904344297961726907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68b9d6b37c5c5443b033cfe1419f38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  lifeTime: 10
+  anim: 1
 --- !u!1 &7397384357577365981
 GameObject:
   m_ObjectHideFlags: 0

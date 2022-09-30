@@ -13,16 +13,16 @@ public class GameController : MonoBehaviour
         // SYNC
         private static extern void TrySyncWallet ();
         public void CallTrySyncWallet () {
-        // #if UNITY_WEBGL == true && UNITY_EDITOR == false
-        //     TrySyncWallet ();
-        // #endif
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            TrySyncWallet ();
+        #endif
         }
         // //GET TEZOS REACT
-        // private static extern void GetTezos (int amount);
+        private static extern void ReactGetTezos (int amount, string walletAddress);
         public void CallGetTezos (int callAmount) {
-        // #if UNITY_WEBGL == true && UNITY_EDITOR == false
-        //     GetTezos (callAmount);
-        // #endif
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            ReactGetTezos (callAmount, walletAddress);
+        #endif
         }
 
         //REACT -> UNITY
@@ -70,6 +70,24 @@ public class GameController : MonoBehaviour
             request.SetRequestHeader("Content-Type", "application/json");
             Debug.Log("Sending web request:" + requestURL + " " + jsonString);
             yield return request.SendWebRequest();
+            
+            switch (request.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(requestURL + ":\nError: " + request.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(requestURL + ":\nHTTP Error: " + request.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(requestURL + ":\nReceived: " + request.downloadHandler.text);
+                    Debug.Log("tezos request successful");
+                    break;
+                default:
+                    Debug.Log(requestURL + ":\n" + request.result);
+                    break;
+            }
         }
 }
 

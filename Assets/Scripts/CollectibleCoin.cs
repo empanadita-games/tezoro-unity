@@ -18,12 +18,21 @@ public class CollectibleCoin : MonoBehaviour
 
         Invoke("DestroyAfterTime", lifeTime);
     }
+    //
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (((1 << other.gameObject.layer) & deathLayers) == 0) return;
+    //
+    //     Destroy(gameObject);
+    // }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (((1 << other.gameObject.layer) & deathLayers) == 0) return;
-
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.AddTezos(1);
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

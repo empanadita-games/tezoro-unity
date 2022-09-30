@@ -1,11 +1,15 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager instance;
+    public static GameManager instance;
     
     [SerializeField] private int maxFPS = 60;
+    public int tezosCollected;
+
+    public UIController UIController;
 
     void Awake()
     {
@@ -16,7 +20,16 @@ public class GameManager : MonoBehaviour
     {
         if (instance==null) instance = this;
         else Destroy(instance);
-        
-        
+    }
+
+    public void AddTezos(int n)
+    {
+        tezosCollected += n;
+        UIController.instance.tezos.text = tezosCollected.ToString();
+    }
+
+    public void StartGetTezos()
+    {
+        GameController.instance.CallGetTezos(tezosCollected);
     }
 }

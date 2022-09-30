@@ -1,5 +1,5 @@
 mergeInto(LibraryManager.library, {
-  TrySyncWallet: function {
+  TrySyncWallet: function() {
     window.dispatchReactUnityEvent("TrySyncWallet");
   },
 });

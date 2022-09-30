@@ -12,16 +12,16 @@ public class GameController : MonoBehaviour
         // SYNC
         private static extern void TrySyncWallet ();
         public void CallTrySyncWallet () {
-        #if UNITY_WEBGL == true && UNITY_EDITOR == false
-            TrySyncWallet ();
-        #endif
+        // #if UNITY_WEBGL == true && UNITY_EDITOR == false
+        //     TrySyncWallet ();
+        // #endif
         }
-        //GET TEZOS
-        private static extern void GetTezos (int amount);
+        // //GET TEZOS REACT
+        // private static extern void GetTezos (int amount);
         public void CallGetTezos (int callAmount) {
-        #if UNITY_WEBGL == true && UNITY_EDITOR == false
-            GetTezos (callAmount);
-        #endif
+        // #if UNITY_WEBGL == true && UNITY_EDITOR == false
+        //     GetTezos (callAmount);
+        // #endif
         }
 
         //REACT -> UNITY

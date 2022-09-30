@@ -266,10 +266,10 @@ GameObject:
   m_Component:
   - component: {fileID: 187563627}
   - component: {fileID: 187563630}
-  - component: {fileID: 187563629}
   - component: {fileID: 187563628}
+  - component: {fileID: 187563631}
   m_Layer: 0
-  m_Name: Test_GetTezos (1)
+  m_Name: Test_GetTezosWEB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,18 +317,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &187563629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187563626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9057b89d3b6f904f845c06b1c721dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &187563630
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -381,6 +369,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &187563631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187563626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6afaafcfa56633438a5a5d83d70f588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &321148722
 GameObject:
   m_ObjectHideFlags: 0

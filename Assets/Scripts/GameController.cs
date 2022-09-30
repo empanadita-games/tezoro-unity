@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
             
             var myData = new TezosRequestData();
             //myData.address = walletAddress;
-            myData.amount = GameManager.instance.tezosCollected;
+            //myData.amount = GameManager.instance.tezosCollected;
             myData.address = "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi";
             myData.amount = 3;
 
@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
             
             UnityWebRequest request = UnityWebRequest.Put(requestURL, jsonString);
             request.SetRequestHeader("Content-Type", "application/json");
+            Debug.Log("Sending web request:" + requestURL + " " + jsonString);
             yield return request.SendWebRequest();
         }
 }

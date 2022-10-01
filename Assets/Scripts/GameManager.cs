@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public void AddTezos(int n)
     {
         tezosCollected += n;
-        UIController.instance.tezos.text = tezosCollected.ToString();
+        UIController.Instance.tezos.text = tezosCollected.ToString();
     }
 
     public void StartGetTezos()

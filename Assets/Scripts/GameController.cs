@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         public void SetWallet (string address) {
             Debug.Log ($"Sync Succesful. Address: {address}");
             walletAddress = address;
-            UIController.instance.walletAddress.text = walletAddress;
+            UIController.Instance.walletAddress.text = walletAddress;
         }
         
         public static GameController instance;
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
             else Destroy(instance);
             DontDestroyOnLoad(this);
 
-            onWalletSynced.AddListener(() => { UIController.instance.walletAddress.text = walletAddress; }
+            onWalletSynced.AddListener(() => { UIController.Instance.walletAddress.text = walletAddress; }
             );
         }
 

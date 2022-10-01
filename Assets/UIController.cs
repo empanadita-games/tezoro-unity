@@ -10,13 +10,13 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI tezos;
     [SerializeField] private FadeController fadeController;
 
-    public static UIController instance;
+    public static UIController Instance;
 
     public FadeController Fade => fadeController;
 
     private void Start()
     {
-        if (instance==null) instance = this;
+        if (Instance==null) Instance = this;
         else Destroy(this);
         DontDestroyOnLoad(this);
     }

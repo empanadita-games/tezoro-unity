@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
         {
             WWWForm form = new WWWForm();
             form.AddField("amount", "3");
-            form.AddField("addresss", "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi");
+            form.AddField("address", "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi");
             
             string requestURL = "https://remote-signer.herokuapp.com/sendTez";
             

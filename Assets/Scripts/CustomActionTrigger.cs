@@ -20,6 +20,9 @@ public class CustomActionTrigger : MonoBehaviour
 			return;
 
 		TriggerEnter?.Invoke();
+
+		if (destroyAfterTrigger)
+			Destroy(gameObject);
 	}
 
     private void OnTriggerExit2D(Collider2D collision)

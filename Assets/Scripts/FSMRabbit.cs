@@ -136,6 +136,7 @@ public class FSMRabbit : MonoBehaviour
             rb.velocity = Vector2.zero;
             LookRight(true);
             anim.SetTrigger(Convert1);
+            Instantiate(magicParticles, transform.position, Quaternion.identity);
         };
 
         _myFsm = new EventFSM<PlayerInputs>(wpIdle);
@@ -199,7 +200,6 @@ public class FSMRabbit : MonoBehaviour
 
     public void DestroyAndSpawnSapo()
     {
-        Instantiate(magicParticles, transform.position, Quaternion.identity);
         Instantiate(sapo, transform.position+sapoSpawnOffset, transform.rotation);
         Destroy(gameObject);
     }

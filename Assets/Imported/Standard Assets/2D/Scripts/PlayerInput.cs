@@ -53,11 +53,15 @@ public class PlayerInput : MonoBehaviour
 
     public void BlockInput()
     {
+        if (isInputBlocked) return;
+
         isInputBlocked = true;
     }
 
     public void UnblockInput()
     {
+        if (!isInputBlocked) return;
+
         isInputBlocked = false;
     }
 

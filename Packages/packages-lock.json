@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.codewriter.triinspector": {
+      "version": "https://github.com/codewriter-packages/Tri-Inspector.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c7d0f2ed8413d79e59827538849423ef35588901"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,

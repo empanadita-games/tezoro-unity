@@ -6,6 +6,6 @@ public class Trigger_WebGetTezos : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameManager.instance.StartWebGetTezos();
+        GameManager.Instance.StartWebGetTezos();
     }
 }

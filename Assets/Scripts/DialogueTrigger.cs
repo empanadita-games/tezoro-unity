@@ -21,7 +21,7 @@ public class DialogueTrigger : MonoBehaviour
         gameObject.SetActive(false);
         if (blockPlayerMovement)
         {
-            var player = other.GetComponent<Platformer2DUserControl>();
+            var player = other.GetComponent<PlayerInput>();
             player.BlockInput();
         }
     }

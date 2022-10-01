@@ -30,7 +30,7 @@ public class CollectibleCoin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.AddTezos(1);
+            GameManager.Instance.AddTezos(1);
             Destroy(gameObject);
         }
     }

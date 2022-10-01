@@ -157,6 +157,8 @@ MonoBehaviour:
   coinzInterval: 0.2
   coin: {fileID: 7397384357577365981, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
   sapo: {fileID: 373623356018288270, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
+  magicParticles: {fileID: 9105390994384474917, guid: ea2c785f184b99442b67941302066221, type: 3}
+  sapoSpawnOffset: {x: -0.2, y: 0.2, z: 0}
 --- !u!114 &2860190247353891320
 MonoBehaviour:
   m_ObjectHideFlags: 0

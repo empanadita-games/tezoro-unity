@@ -1,25 +1,30 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityStandardAssets._2D;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     
     [SerializeField] private int maxFPS = 60;
     public int tezosCollected;
 
     public UIController UIController;
 
+    private PlayerController playerController;
+    private bool IsPlayerInputBlocked => playerController.Input.Blocked;
+
     void Awake()
     {
         Application.targetFrameRate = maxFPS;
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     private void Start()
     {
-        if (instance==null) instance = this;
-        else Destroy(instance);
+        if (Instance==null) Instance = this;
+        else Destroy(Instance);
     }
 
     public void AddTezos(int n)
@@ -37,4 +42,15 @@ public class GameManager : MonoBehaviour
     {
         GameController.instance.WebGetTezos(tezosCollected);
     }
+
+    public void BlockPlayerInput()
+    {
+        playerController.Input.BlockInput();
+    }
+
+    public void UnblockPlayerInput()
+    {
+        playerController.Input.UnblockInput();
+    }
+
 }

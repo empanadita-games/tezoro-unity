@@ -30,6 +30,8 @@ public class FSMRabbit : MonoBehaviour
     
     public GameObject coin;
     public GameObject sapo;
+    [SerializeField] private GameObject magicParticles;
+    [SerializeField] private Vector3 sapoSpawnOffset;
     private void Awake()
     {
        //PARTE 1: SETEO INICIAL
@@ -189,13 +191,16 @@ public class FSMRabbit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Conversion trigger detected");
-        if (other.CompareTag("Conversion")) SendInputToFSM(PlayerInputs.CONVERTING);
+        if (other.CompareTag("Conversion"))
+        {
+            SendInputToFSM(PlayerInputs.CONVERTING);
+        }
     }
 
     public void DestroyAndSpawnSapo()
     {
-        Instantiate(sapo, transform.position, transform.rotation);
+        Instantiate(magicParticles, transform.position, Quaternion.identity);
+        Instantiate(sapo, transform.position+sapoSpawnOffset, transform.rotation);
         Destroy(gameObject);
     }
 

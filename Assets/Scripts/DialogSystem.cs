@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.Events;
 
 namespace QuantumTek.QuantumDialogue.Demo
 {
@@ -21,17 +23,20 @@ namespace QuantumTek.QuantumDialogue.Demo
         public GameObject dialogBoxGO;
         public Sapotezos sapo;
 
+        [SerializeField] private UnityEvent DialogStarted;
+        [SerializeField] private UnityEvent DialogFinished;
+
         public void StartConversation(string conversation, QD_DialogueHandler newhandler)
         {
             handler = newhandler;
             handler.SetConversation(conversation);
             SetText();
+            GameManager.Instance.BlockPlayerInput();
         }
-        
-        
-        
+
+
         //my code above
-        
+
         private void Update()
         {
             // Don't do anything if the conversation is over
@@ -126,6 +131,7 @@ namespace QuantumTek.QuantumDialogue.Demo
             if (ended)
                 return;
             
+
             // Go to the next message
             handler.NextMessage(choice);
             // Set the new text
@@ -136,6 +142,8 @@ namespace QuantumTek.QuantumDialogue.Demo
                 ended = true;
                 dialogBoxGO.SetActive(false);
                 sapo.FadeOut();
+                DialogFinished?.Invoke();
+                GameManager.Instance.UnblockPlayerInput();
             }
         }
 

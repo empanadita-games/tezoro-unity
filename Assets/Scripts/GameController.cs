@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -57,19 +58,26 @@ public class GameController : MonoBehaviour
         
         public IEnumerator Coro_WebGetTezos(int amount)
         {
+            WWWForm form = new WWWForm();
+            form.AddField("amount", "3");
+            form.AddField("addresss", "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi");
+            
             string requestURL = "https://remote-signer.herokuapp.com/sendTez";
             
-            var myData = new TezosRequestData();
-            //myData.address = walletAddress;
-            //myData.amount = GameManager.instance.tezosCollected;
-            myData.address = "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi";
-            myData.amount = 3;
+            var myData = new TezosRequestData
+            {
+                //myData.amount = GameManager.instance.tezosCollected;
+                //myData.address = walletAddress;
+                address = "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi",
+                amount = 3
+            };
 
-            string jsonString = JsonUtility.ToJson(myData);
-            
-            UnityWebRequest request = UnityWebRequest.Post(requestURL, jsonString);
-            request.SetRequestHeader("Content-Type", "application/json");
-            Debug.Log("Sending web request:" + requestURL + " " + jsonString);
+            //string jsonString = JsonUtility.ToJson(myData);
+            string jsonString = JsonConvert.SerializeObject(myData);
+
+            UnityWebRequest request = UnityWebRequest.Post(requestURL, form); //ojo!
+            //request.SetRequestHeader("Content-Type", "application/json");
+            //Debug.Log("Sending web request:" + requestURL + " " + jsonString);
             yield return request.SendWebRequest();
             
             switch (request.result)

@@ -34,7 +34,8 @@ namespace QuantumTek.QuantumDialogue.Demo
             handler = newhandler;
             handler.SetConversation(conversation);
             SetText();
-           if(blockPlayerInputAtStart) GameManager.Instance.BlockPlayerInput();
+            DialogStarted?.Invoke();
+            if (blockPlayerInputAtStart) GameManager.Instance.BlockPlayerInput();
         }
 
 

@@ -26,6 +26,13 @@ public class GameController : MonoBehaviour
             ReactGetTezos (callAmount, callWalletAddress);
         #endif
         }
+        [DllImport("__Internal")]
+        private static extern void BuyHat (int amount, string walletAddress);
+        public void CallBuyHat () {
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            BuyHat ();
+        #endif
+        }
 
         //REACT -> UNITY
         //RECEIVE WALLET ADDRESS (ALSO CONFIRMATION OF SUCCESFUL SYNC)
@@ -58,26 +65,26 @@ public class GameController : MonoBehaviour
         
         public IEnumerator Coro_WebGetTezos(int amount)
         {
+            if (String.IsNullOrEmpty(walletAddress))
+            {
+                Debug.Log("Error! Trying to send tezos with no destination wallet.");
+                yield return null;
+            }
+            
+            if (amount<1)
+            {
+                Debug.Log("Error! Trying to send <1 tezos");
+                yield return null;
+            }
+            
             WWWForm form = new WWWForm();
-            form.AddField("amount", "3");
-            form.AddField("address", "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi");
+            form.AddField("amount", amount.ToString());
+            form.AddField("address", walletAddress);
             
             string requestURL = "https://remote-signer.herokuapp.com/sendTez";
-            
-            var myData = new TezosRequestData
-            {
-                //myData.amount = GameManager.instance.tezosCollected;
-                //myData.address = walletAddress;
-                address = "tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi",
-                amount = 3
-            };
 
-            //string jsonString = JsonUtility.ToJson(myData);
-            string jsonString = JsonConvert.SerializeObject(myData);
-
-            UnityWebRequest request = UnityWebRequest.Post(requestURL, form); //ojo!
+            UnityWebRequest request = UnityWebRequest.Post(requestURL, form);
             //request.SetRequestHeader("Content-Type", "application/json");
-            //Debug.Log("Sending web request:" + requestURL + " " + jsonString);
             yield return request.SendWebRequest();
             
             switch (request.result)

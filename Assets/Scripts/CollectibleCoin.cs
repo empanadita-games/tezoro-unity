@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CollectibleCoin : MonoBehaviour
 {
-    [SerializeField] private LayerMask deathLayers;
     [SerializeField] private float lifeTime = 5f;
     [SerializeField] private bool anim = true;
 
@@ -14,38 +14,22 @@ public class CollectibleCoin : MonoBehaviour
     private void Start()
     {
         if(anim)
-         transform.DOLocalMoveY(0.2f, 1f).SetLoops(-1, LoopType.Yoyo);
+         transform.parent.DOLocalMoveY(0.2f, 1f).SetLoops(-1, LoopType.Yoyo);
 
         Invoke("DestroyAfterTime", lifeTime);
     }
-    //
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (((1 << other.gameObject.layer) & deathLayers) == 0) return;
-    //
-    //     Destroy(gameObject);
-    // }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            GameManager.Instance.AddTezos(1);
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (((1 << other.gameObject.layer) & deathLayers) == 0) return;
-
-        Destroy(gameObject);
+        if (!other.CompareTag("Player")) return;
+        GameManager.Instance.AddTezos(1);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
 
     private void DestroyAfterTime()
     {
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
 }

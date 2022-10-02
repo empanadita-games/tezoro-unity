@@ -10,29 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fc788fe28a1947c5906bf24c0472406, type: 3}
-  m_Name: Welcome 1
+  m_Name: WalletIntroduction
   m_EditorClassIdentifier: 
   Conversations:
-  - ID: 1
-    Name: Welcome 1
+  - ID: 3
+    Name: Welcome 3
     FirstMessage: 0
   Speakers:
   - ID: 0
-    Name: Sapotezos
+    Name: Tezoro
     Icon: {fileID: 21300000, guid: b881a2050d891ab43bedf9c7dfea041b, type: 3}
   Messages:
   - ID: 0
     Speaker: 0
-    SpeakerName: Sapotezos
+    SpeakerName: 
     PreviousMessage: 0
     NextMessage: 1
-    MessageText: On tezos there are many wallets, and many ways to make a wallet.
+    MessageText: A wallet is a place where you can store your cryptocurrencies.
     Clip: {fileID: 0}
   - ID: 1
     Speaker: 0
-    SpeakerName: Sapotezos
+    SpeakerName: 
     PreviousMessage: 0
-    NextMessage: 0
-    MessageText: "But to keep it simple, we\u2019ll teach you the easy way"
+    NextMessage: 2
+    MessageText: It also allows you to send, receive crypto and NFTs
+    Clip: {fileID: 0}
+  - ID: 2
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 3
+    MessageText: There are many wallets and many ways to create one
+    Clip: {fileID: 0}
+  - ID: 3
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: -1
+    MessageText: "But to keep it simple, we\u2019ll show you an easy way"
     Clip: {fileID: 0}
   Choices: []

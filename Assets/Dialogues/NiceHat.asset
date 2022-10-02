@@ -40,7 +40,7 @@ MonoBehaviour:
     SpeakerName: Tezoro
     PreviousMessage: 0
     NextMessage: 3
-    MessageText: Their FXRandom()
+    MessageText: They're FXRandom()
     Clip: {fileID: 0}
   - ID: 3
     Speaker: 0

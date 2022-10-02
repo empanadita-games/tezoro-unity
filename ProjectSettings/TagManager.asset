@@ -5,22 +5,24 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - Conversion
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - CameraConfiner
+  - PostProccesing
+  - Pregame
+  - Rabbit
+  - Triggers
+  - TezoCoin
+  - HideInGame
+  - Wallet
   - 
   - 
   - 

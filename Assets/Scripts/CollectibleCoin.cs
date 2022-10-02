@@ -32,7 +32,6 @@ public class CollectibleCoin : MonoBehaviour
 
     private void DestroyAfterTime()
     {
-        Instantiate(coinParticles, transform.position, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
     }
 

@@ -12,8 +12,8 @@ public class MusicChanger : MonoBehaviour
 
     public void ChangeMusic()
     {
-        firstAudio.DOFade(maxVolume, 1f);
-        secondAudio.DOFade(maxVolume, 1f);
+        firstAudio.DOFade(0, 6f);
+        secondAudio.DOFade(maxVolume, 4f);
         secondAudio.Play();
     }
 }

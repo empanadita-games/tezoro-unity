@@ -750,7 +750,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1a30cc19dd22f0c448043cd7ea497e37, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1260,7 +1260,7 @@ PrefabInstance:
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1712964492}
+      objectReference: {fileID: 1712964494}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1307,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: ChangeMusic
       objectReference: {fileID: 0}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -1331,7 +1331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: 
+      value: MusicChanger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -1355,7 +1355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3797495293480552625, guid: 699c69f6f7110ce43827c748bcf17b97, type: 3}
       propertyPath: DialogStarted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

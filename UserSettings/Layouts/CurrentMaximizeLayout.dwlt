@@ -224,23 +224,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fe690000
+      m_SelectedIDs: 82a60000
       m_LastClickedID: 0
-      m_ExpandedIDs: c29cf3ff24e0ffff68f0ffff7cf4ffffccfaffff
+      m_ExpandedIDs: 867cf3ff1094f3ff1294f3ffc29cf3ff24e0ffff68f0ffff7cf4ffffccfaffff46a3000066a30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Tezoro Musica Ciudad Loop
+        m_OriginalName: Tezoro Musica Ciudad Loop
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 42626
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -549,9 +549,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 222.06071, y: 0.33629405, z: -0.0275609}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 222.06071, y: 0.33629405, z: -0.0275609}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -602,9 +602,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.4702392
+    m_Target: 10
     speed: 2
-    m_Value: 3.4702392
+    m_Value: 10
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -865,7 +865,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa690000ac690000ae690000b0690000b2690000b4690000b6690000
+    m_ExpandedIDs: 00000000aa690000ac690000ae690000b0690000b2690000b4690000b669000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -890,8 +890,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: fe690000
-    m_LastClickedInstanceID: 27134
+    m_SelectedInstanceIDs: 82a60000
+    m_LastClickedInstanceID: 42626
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300002c660000286f0000027a0000
     m_RenameOverlay:
@@ -979,7 +979,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -4006
+  m_LastSelectedObjectID: 42626
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TezosRainController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class TezosRainController : MonoBehaviour
     private Vector2 spawnPosRight;
     private bool isRainActive;
 
+    public UnityEvent onRainEnd;
     private void OnDrawGizmos()
     {
         if (!isRainActive)
@@ -43,15 +45,15 @@ public class TezosRainController : MonoBehaviour
     {       
         MoveRainSpawnPoint();
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-           StartTezosRain();
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-           StopAllCoroutines();
-        }
+        // if (Input.GetKeyDown(KeyCode.DownArrow))
+        // {
+        //    StartTezosRain();
+        // }
+        //
+        // if (Input.GetKeyDown(KeyCode.UpArrow))
+        // {
+        //    StopAllCoroutines();
+        // }
     }
 
     private void MoveRainSpawnPoint()
@@ -83,6 +85,7 @@ public class TezosRainController : MonoBehaviour
             if(tezosCounter >= tezosLimit)
                 isRainActive = false;
         }
+        onRainEnd.Invoke();
     }
 
 

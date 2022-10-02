@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
         #endif
         }
         [DllImport("__Internal")]
-        private static extern void BuyHat (int amount, string walletAddress);
+        private static extern void BuyHat ();
         public void CallBuyHat () {
         #if UNITY_WEBGL == true && UNITY_EDITOR == false
             BuyHat ();
@@ -105,6 +105,7 @@ public class GameController : MonoBehaviour
                     break;
             }
         }
+        
 }
 
 [Serializable]

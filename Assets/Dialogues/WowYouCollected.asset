@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc788fe28a1947c5906bf24c0472406, type: 3}
+  m_Name: WowYouCollected
+  m_EditorClassIdentifier: 
+  Conversations:
+  - ID: 3
+    Name: Welcome 3
+    FirstMessage: 0
+  Speakers:
+  - ID: 0
+    Name: Tezoro
+    Icon: {fileID: 21300000, guid: b881a2050d891ab43bedf9c7dfea041b, type: 3}
+  Messages:
+  - ID: 0
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 1
+    MessageText: Wow! You collected so many tezos
+    Clip: {fileID: 0}
+  - ID: 1
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 2
+    MessageText: "Let\u2019s send them to the wallet you just created."
+    Clip: {fileID: 0}
+  - ID: 2
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 3
+    MessageText: "Don\u2019t spend them all in one place"
+    Clip: {fileID: 0}
+  - ID: 3
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 4
+    MessageText: Just kidding, you cannot spend them outside this testnet fantasy
+    Clip: {fileID: 0}
+  - ID: 4
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 5
+    MessageText: Ha ha
+    Clip: {fileID: 0}
+  - ID: 5
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 6
+    MessageText: In a moment, you can check your wallet...
+    Clip: {fileID: 0}
+  - ID: 6
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: 7
+    MessageText: ...you should see your tezos have arrived.
+    Clip: {fileID: 0}
+  - ID: 7
+    Speaker: 0
+    SpeakerName: 
+    PreviousMessage: 0
+    NextMessage: -1
+    MessageText: It takes about 15 seconds for transactions to be added on the blockchain
+    Clip: {fileID: 0}
+  Choices: []

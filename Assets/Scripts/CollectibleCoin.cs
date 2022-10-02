@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class CollectibleCoin : MonoBehaviour
 {
+    public GameObject coinParticles;
+    
     [SerializeField] private float lifeTime = 5f;
     [SerializeField] private bool anim = true;
 
@@ -29,6 +31,7 @@ public class CollectibleCoin : MonoBehaviour
 
     private void DestroyAfterTime()
     {
+        Instantiate(coinParticles, transform.position, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
     }
 

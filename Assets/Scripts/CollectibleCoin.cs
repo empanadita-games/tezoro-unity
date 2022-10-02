@@ -25,6 +25,7 @@ public class CollectibleCoin : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         GameManager.Instance.AddTezos(1);
+        Instantiate(coinParticles, transform.position, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
     }
 

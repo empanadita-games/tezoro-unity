@@ -116,6 +116,12 @@ public class GameController : MonoBehaviour
         
         public IEnumerator Coro_SendObjkt()
         {
+            if (String.IsNullOrEmpty(walletAddress))
+            {
+                Debug.Log("Error! Trying to send OBJKT with no destination wallet.");
+                yield return null;
+            }
+            
             int n = UnityEngine.Random.Range(0, 4);
             
             Debug.Log("n: " + n);

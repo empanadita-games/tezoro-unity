@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class SlideController : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class SlideController : MonoBehaviour
     [Header("Controls")]
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
+
+    [SerializeField] private UnityEvent SlidesStarted;
+    [SerializeField] private UnityEvent SlidesFinished;
+    
+
+
 
     private int index = 0;
 
@@ -89,10 +96,12 @@ public class SlideController : MonoBehaviour
     public void Show()
     {
         ReproduceAnim(gameObject, true);
+        SlidesStarted?.Invoke();
     }
 
     public void Hide()
     {
         ReproduceAnim(gameObject, false);
+        SlidesFinished?.Invoke();
     }
 }

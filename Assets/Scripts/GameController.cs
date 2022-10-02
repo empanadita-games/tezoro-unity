@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class GameController : MonoBehaviour
             TrySyncWallet ();
         #endif
         }
-        // //GET TEZOS REACT
+        //GET TEZOS REACT
+        //This method was not used in the production version
     [DllImport("__Internal")]
     private static extern void ReactGetTezos (int amount, string walletAddress);
         public void CallGetTezos (int callAmount, string callWalletAddress) {
@@ -40,7 +42,7 @@ public class GameController : MonoBehaviour
         public string walletAddress;
         public UnityEvent onWalletSynced;
 
-        //THIS METHOD SHOULD BE CALLED FROM REACT
+        //THIS METHOD IS CALLED FROM REACT
         public void SetWallet (string address) {
             Debug.Log ($"Sync Succesful. Address: {address}");
             walletAddress = address;
@@ -83,6 +85,43 @@ public class GameController : MonoBehaviour
             form.AddField("address", walletAddress);
             
             string requestURL = "https://remote-signer.herokuapp.com/sendTez";
+
+            UnityWebRequest request = UnityWebRequest.Post(requestURL, form);
+            //request.SetRequestHeader("Content-Type", "application/json");
+            yield return request.SendWebRequest();
+            
+            switch (request.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(requestURL + ":\nError: " + request.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(requestURL + ":\nHTTP Error: " + request.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(requestURL + ":\nReceived: " + request.downloadHandler.text);
+                    Debug.Log("tezos request successful");
+                    break;
+                default:
+                    Debug.Log(requestURL + ":\n" + request.result);
+                    break;
+            }
+        }
+        
+        //WEB REQUEST VERSION OF GETHAT
+
+        public void WebGetHat() => StartCoroutine(Coro_WebGetHat());
+        
+        public IEnumerator Coro_WebGetHat()
+        {
+            int n = UnityEngine.Random.Range(0, 4);
+
+            WWWForm form = new WWWForm();
+            form.AddField("token_id", n.ToString());
+            form.AddField("address", walletAddress);
+            
+            string requestURL = "https://remote-signer.herokuapp.com/sendObjkt";
 
             UnityWebRequest request = UnityWebRequest.Post(requestURL, form);
             //request.SetRequestHeader("Content-Type", "application/json");

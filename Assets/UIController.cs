@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -14,10 +12,30 @@ public class UIController : MonoBehaviour
 
     public FadeController Fade => fadeController;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this.gameObject);
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+    }
+
     private void Start()
     {
-        if (Instance==null) Instance = this;
-        else Destroy(this);
-        DontDestroyOnLoad(this);
+        Fade.PlayFadeIn();
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        Fade.PlayFadeIn();
     }
 }

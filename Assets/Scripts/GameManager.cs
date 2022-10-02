@@ -1,7 +1,4 @@
-using System;
-using TMPro;
 using UnityEngine;
-using UnityStandardAssets._2D;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,17 +12,25 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
     private bool IsPlayerInputBlocked => playerController.Input.Blocked;
 
-    void Awake()
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this.gameObject);
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+    }
+
+
+    private void Start()
     {
         Application.targetFrameRate = maxFPS;
         playerController = FindObjectOfType<PlayerController>();
     }
 
-    private void Start()
-    {
-        if (Instance==null) Instance = this;
-        else Destroy(Instance);
-    }
 
     public void AddTezos(int n)
     {

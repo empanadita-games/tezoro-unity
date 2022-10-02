@@ -7,14 +7,8 @@ public class FadeController : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float fadeInDuration = 1f;
     [SerializeField] private float fadeOutDuration = 1f;
-    [SerializeField] private bool fadeInAtStart = true;
 
     private bool inTransition;
-
-    private void Start()
-    {
-        if(fadeInAtStart) PlayFadeIn();
-    }
 
     public void PlayFadeIn(float duration = default(float))
     {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 926631050198587301}
   - component: {fileID: 926631050198587300}
   - component: {fileID: 5635310567547573136}
+  - component: {fileID: 6735350052446294186}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926631050198587291}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.279296, y: -2.3909073, z: -0.055029236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -45,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1de933783ff58041a32262945057065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   maxFPS: 60
+  tezosCollected: 0
+  UIController: {fileID: 0}
 --- !u!114 &5635310567547573136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,3 +63,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorClicked: {fileID: 2800000, guid: 2346dbfa7b852df4f9406523c8c8dec8, type: 3}
   cursorDefault: {fileID: 2800000, guid: 18339e70cd6949849806d51ec322a168, type: 3}
+--- !u!114 &6735350052446294186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926631050198587291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245e6437e4022f040aea40046a0f74d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTransitionDuration: 2

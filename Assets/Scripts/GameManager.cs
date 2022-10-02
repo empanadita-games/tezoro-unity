@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int tezosCollected;
 
     public UIController UIController;
-
+    public LoadSceneController loadSceneController;
     private PlayerController playerController;
     private bool IsPlayerInputBlocked => playerController.Input.Blocked;
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = maxFPS;
         playerController = FindObjectOfType<PlayerController>();
+        loadSceneController = GetComponent<LoadSceneController>();
     }
 
 
@@ -58,4 +60,15 @@ public class GameManager : MonoBehaviour
         playerController.Input.UnblockInput();
     }
 
+    public void FinishGame()
+    {
+        StartCoroutine(FinishGameCoroutine());
+    }
+
+    private IEnumerator FinishGameCoroutine() {
+        yield return new WaitForSeconds(6f);
+        UIController.Fade.PlayFadeOut(4f);
+        yield return new WaitForSeconds(2f);
+        loadSceneController.LoadNextScene(false);
+    }
 }

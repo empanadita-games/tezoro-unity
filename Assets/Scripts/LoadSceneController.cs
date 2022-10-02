@@ -1,5 +1,4 @@
 using System.Collections;
-using TriInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,27 +6,25 @@ public class LoadSceneController : MonoBehaviour
 {
     [SerializeField] private float sceneTransitionDuration = 2f;
 
-    [Button]
-    public void LoadNextScene()
+    public void LoadNextScene(bool useFade = true)
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int sceneCount = SceneManager.sceneCount;
         int nextScene = 0;
 
-        if (currentScene <= sceneCount)
+        if (currentScene <= sceneCount-1)
             nextScene = currentScene + 1;
         else
         {
             print("Its last scene");
-            return;
         }
 
-        StartCoroutine(LoadSceneCoroutine(nextScene));
+        StartCoroutine(LoadSceneCoroutine(nextScene, useFade));
     }
 
-    private IEnumerator LoadSceneCoroutine(int scene)
+    private IEnumerator LoadSceneCoroutine(int scene, bool useFade)
     {
-        UIController.Instance.Fade.PlayFadeOut(sceneTransitionDuration);
+        if(useFade)UIController.Instance.Fade.PlayFadeOut(sceneTransitionDuration);
         yield return new WaitForSeconds(sceneTransitionDuration);
         SceneManager.LoadScene(scene);
     }

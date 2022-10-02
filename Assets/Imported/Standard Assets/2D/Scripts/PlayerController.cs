@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,8 +22,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private PlayerInput playerInput;
+    private bool isButterfly;
 
     public PlayerInput Input => playerInput;
+    [SerializeField] private GameObject particleButterfly;  
 
     private void Awake()
     {
@@ -34,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isButterfly) return;
+
         m_Grounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -63,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump)
     {
+        if (isButterfly) return;
+
         // If crouching, check to see if the character can stand up
         if (!crouch && m_Anim.GetBool("Crouch"))
         {
@@ -122,6 +130,8 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
+        if (isButterfly) return;
+
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
 
@@ -136,6 +146,24 @@ public class PlayerController : MonoBehaviour
         if (m_Rigidbody2D != null) return;
 
         m_Rigidbody2D.velocity = Vector3.zero;
+    }
+
+    public void TransformToButterfly()
+    {
+        StartCoroutine(ButterflyTransformation());
+    }
+
+    private IEnumerator ButterflyTransformation()
+    {
+        isButterfly = true;
+        playerInput.BlockInput();
+        yield return new WaitForSeconds(1f);
+        Instantiate(particleButterfly, transform.position, Quaternion.identity);
+        m_Anim.SetBool("Butterfly", true);
+        yield return new WaitForSeconds(2f);
+        m_Rigidbody2D.isKinematic = true;
+
+        transform.DOMoveY(10, 15f);
     }
 }
 

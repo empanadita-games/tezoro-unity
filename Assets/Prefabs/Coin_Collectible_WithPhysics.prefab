@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: deathLayers.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7008215873022916761, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
+      propertyPath: anim
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7397384357577365976, guid: c0ec0608bdd478f448d3ccb1cacc7370, type: 3}
       propertyPath: m_RootOrder
       value: 0

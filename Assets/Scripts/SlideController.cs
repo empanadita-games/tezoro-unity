@@ -14,14 +14,14 @@ public class SlideController : MonoBehaviour
 
     [SerializeField] private UnityEvent SlidesStarted;
     [SerializeField] private UnityEvent SlidesFinished;
-    
-
 
 
     private int index = 0;
 
     private void Start()
     {
+        var canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0f;
         RestartSlides();
 
         nextButton.onClick.AddListener(NextSlide);

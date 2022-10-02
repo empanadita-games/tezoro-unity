@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
             Debug.Log ($"Sync Succesful. Address: {address}");
             walletAddress = address;
             UIController.Instance.walletAddress.text = walletAddress;
+            onWalletSynced.Invoke();
         }
         
         public static GameController instance;
@@ -105,7 +106,16 @@ public class GameController : MonoBehaviour
                     break;
             }
         }
-        
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                #if UNITY_EDITOR == true
+                SetWallet("tz2W9y2NMFYX8awk6W27q49yaoJoD8uMCBHi");
+                #endif
+            }
+        }
 }
 
 [Serializable]

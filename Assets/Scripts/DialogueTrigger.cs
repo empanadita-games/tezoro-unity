@@ -13,7 +13,8 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return; 
+        if (!other.CompareTag("Player")) return;
+        if (!gameObject.activeSelf) return;
         dialogueBox.gameObject.SetActive(true);
         dialogueBox.dialogSystem.StartConversation(dialogueBox.handler.dialogue.Conversations[dialogueBox.conversationNr].Name, dialogueBox.handler);
         dialogueBox.dialogSystem.messageText = dialogueBox.messageField;
@@ -24,5 +25,14 @@ public class DialogueTrigger : MonoBehaviour
             var player = other.GetComponent<PlayerInput>();
             player.BlockInput();
         }
+    }
+
+    public void IndependentShowDialogue()
+    {
+        dialogueBox.gameObject.SetActive(true);
+        dialogueBox.dialogSystem.StartConversation(dialogueBox.handler.dialogue.Conversations[dialogueBox.conversationNr].Name, dialogueBox.handler);
+        dialogueBox.dialogSystem.messageText = dialogueBox.messageField;
+        dialogueBox.dialogSystem.speakerName = dialogueBox.nameField;
+        gameObject.SetActive(false);
     }
 }

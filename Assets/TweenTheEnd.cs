@@ -21,7 +21,7 @@ public class TweenTheEnd : MonoBehaviour
         var sq = DOTween.Sequence();
         sq.Append(end1.DOFade(1, 2));
         sq.Append(end2.DOFade(1, 2f));
-        sq.AppendInterval(2f);
+        sq.AppendInterval(0.5f);
         sq.Append(credit.DOFade(1,4));
     }
 }

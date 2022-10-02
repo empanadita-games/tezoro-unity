@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1616233732
 RectTransform:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -2.7607}
-  m_SizeDelta: {x: -1.3087, y: -5.5214}
+  m_SizeDelta: {x: -3.4787, y: -5.5214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1616233734
 CanvasRenderer:
@@ -475,7 +475,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079277232197989627}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0.87
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -499,6 +499,7 @@ MonoBehaviour:
   - {fileID: 1176845222564056016}
   - {fileID: 8030342546880088220}
   - {fileID: 7895044919636665127}
+  - {fileID: 6833148379450176708}
   nextButton: {fileID: 1341457291044484103}
   previousButton: {fileID: 9055795009905223820}
   closeButton: {fileID: 3908947551607452524}
@@ -1002,8 +1003,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.2248998, y: -0.0726}
-  m_SizeDelta: {x: 5.3297, y: 6.1463}
+  m_AnchoredPosition: {x: 3.2248998, y: 0.5348}
+  m_SizeDelta: {x: 5.3297, y: 4.2759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &641991244199913420
 CanvasRenderer:
@@ -1864,10 +1865,10 @@ RectTransform:
   m_Father: {fileID: 7973844661921653195}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.6154, y: -2.5141}
-  m_SizeDelta: {x: -4.9978, y: -6.2044}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.00000011920929, y: -2.82}
+  m_SizeDelta: {x: 8.999001, y: 1.8170004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4546732772031154082
 CanvasRenderer:
@@ -2302,7 +2303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &710380503105184620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2550,10 +2551,10 @@ RectTransform:
   m_Father: {fileID: 7973844661921653195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.2373, y: 0.8081}
-  m_SizeDelta: {x: -7.7914, y: -3.1941}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.67}
+  m_SizeDelta: {x: 6.2054005, y: 4.8273005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6685955589910025999
 CanvasRenderer:
@@ -3358,7 +3359,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 3.2248998, y: -0.0726}
-  m_SizeDelta: {x: 5.3297, y: 6.1463}
+  m_SizeDelta: {x: 5.3297, y: 2.4828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1102011059083911332
 CanvasRenderer:
@@ -3388,9 +3389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "6. A \u201CRequest for permissions\u201D will appear. \n\nThis approves
-    the game to connect with your wallet and request transactions. \n\nDon\u2019t
-    worry, you will be asked to sign for any future transactions with the game."
+  m_text: '7. Remember to return to this tab after you click approve! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a0c8905a3d11fbe49a5d187d981e4873, type: 2}
   m_sharedMaterial: {fileID: 3790637705678843104, guid: a0c8905a3d11fbe49a5d187d981e4873, type: 2}

@@ -11,6 +11,7 @@ public class SlideController : MonoBehaviour
     [Header("Controls")]
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
+    [SerializeField] private Button closeButton;
 
     [SerializeField] private UnityEvent SlidesStarted;
     [SerializeField] private UnityEvent SlidesFinished;
@@ -38,6 +39,15 @@ public class SlideController : MonoBehaviour
     {
         nextButton.interactable = index < slides.Length-1;
         previousButton.interactable = index > 0;
+
+        if(index < slides.Length - 1)
+        {
+            closeButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            closeButton.gameObject.SetActive(true);
+        }
     }
 
     private void ReproduceAnim(GameObject Slide, bool fadeIn)
@@ -97,11 +107,14 @@ public class SlideController : MonoBehaviour
     {
         ReproduceAnim(gameObject, true);
         SlidesStarted?.Invoke();
+        GameManager.Instance.BlockPlayerInput();
     }
 
     public void Hide()
     {
         ReproduceAnim(gameObject, false);
         SlidesFinished?.Invoke();
+        GameManager.Instance.UnblockPlayerInput();
+
     }
 }

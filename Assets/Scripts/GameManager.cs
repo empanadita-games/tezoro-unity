@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
     private bool IsPlayerInputBlocked => playerController.Input.Blocked;
 
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -25,14 +24,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private void Start()
     {
         Application.targetFrameRate = maxFPS;
         playerController = FindObjectOfType<PlayerController>();
         loadSceneController = GetComponent<LoadSceneController>();
     }
-
 
     public void AddTezos(int n)
     {

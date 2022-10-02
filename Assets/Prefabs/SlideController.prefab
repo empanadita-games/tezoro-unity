@@ -501,6 +501,13 @@ MonoBehaviour:
   - {fileID: 7895044919636665127}
   nextButton: {fileID: 1341457291044484103}
   previousButton: {fileID: 9055795009905223820}
+  closeButton: {fileID: 3908947551607452524}
+  SlidesStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  SlidesFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1176845222564056016
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,10 +87,10 @@ RectTransform:
   m_Father: {fileID: 4114820836945139771}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.05747509, y: 1.8176}
-  m_SizeDelta: {x: 4.64095, y: 2.5588}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.4708, y: -1.0804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3470143163857687296
 CanvasRenderer:
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: something something tezos
+  m_text: 'Lorem '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a0c8905a3d11fbe49a5d187d981e4873, type: 2}
   m_sharedMaterial: {fileID: 3790637705678843104, guid: a0c8905a3d11fbe49a5d187d981e4873, type: 2}
@@ -147,12 +147,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.4
+  m_fontSize: 0.61
   m_fontSizeBase: 0.4
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0.1
+  m_fontSizeMax: 0.61
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -318,6 +318,12 @@ MonoBehaviour:
   choiceTemplate: {fileID: 0}
   dialogBoxGO: {fileID: 7574804024013411684}
   sapo: {fileID: 0}
+  DialogStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  DialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7574804024013411684
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +410,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4025035485329307591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,8 +480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2.440925, y: -0.44145}
-  m_SizeDelta: {x: 4.6409497, y: 0.64209986}
+  m_AnchoredPosition: {x: 2.491, y: -0.3485}
+  m_SizeDelta: {x: 4.5408, y: 0.4562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7599369978357864229
 CanvasRenderer:

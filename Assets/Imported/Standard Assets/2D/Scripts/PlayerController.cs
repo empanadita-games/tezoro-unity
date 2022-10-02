@@ -35,11 +35,9 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
-
     private void FixedUpdate()
     {
-        if (isButterfly) return;
-
+      
         m_Grounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -69,7 +67,6 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump)
     {
-        if (isButterfly) return;
 
         // If crouching, check to see if the character can stand up
         if (!crouch && m_Anim.GetBool("Crouch"))

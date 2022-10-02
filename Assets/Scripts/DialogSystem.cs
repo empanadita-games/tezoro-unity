@@ -26,12 +26,15 @@ namespace QuantumTek.QuantumDialogue.Demo
         [SerializeField] private UnityEvent DialogStarted;
         [SerializeField] private UnityEvent DialogFinished;
 
+        [SerializeField] private  bool blockPlayerInputAtStart = true;
+        [SerializeField] private  bool unblockPlayerInputAtFinish = true;
+
         public void StartConversation(string conversation, QD_DialogueHandler newhandler)
         {
             handler = newhandler;
             handler.SetConversation(conversation);
             SetText();
-            GameManager.Instance.BlockPlayerInput();
+           if(blockPlayerInputAtStart) GameManager.Instance.BlockPlayerInput();
         }
 
 
@@ -46,7 +49,7 @@ namespace QuantumTek.QuantumDialogue.Demo
             }
 
             // Check if the space key is pressed and the current message is not a choice
-            if (handler.currentMessageInfo.Type == QD_NodeType.Message && (Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.C) || Input.GetMouseButtonDown(0)))
+            if (handler.currentMessageInfo.Type == QD_NodeType.Message && (Input.anyKeyDown))
                 Next();
         }
 
@@ -143,7 +146,7 @@ namespace QuantumTek.QuantumDialogue.Demo
                 dialogBoxGO.SetActive(false);
                 sapo.FadeOut();
                 DialogFinished?.Invoke();
-                GameManager.Instance.UnblockPlayerInput();
+                if (unblockPlayerInputAtFinish) GameManager.Instance.UnblockPlayerInput();
             }
         }
 

@@ -3061,7 +3061,7 @@ GameObject:
   - component: {fileID: 2051662249}
   - component: {fileID: 2051662248}
   m_Layer: 0
-  m_Name: CheatCode
+  m_Name: CheatCode Skip Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

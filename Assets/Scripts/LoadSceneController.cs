@@ -12,11 +12,12 @@ public class LoadSceneController : MonoBehaviour
         int sceneCount = SceneManager.sceneCount;
         int nextScene = 0;
 
-        if (currentScene <= sceneCount-1)
+        if (currentScene <= sceneCount)
             nextScene = currentScene + 1;
         else
         {
             print("Its last scene");
+            return;
         }
 
         StartCoroutine(LoadSceneCoroutine(nextScene, useFade));

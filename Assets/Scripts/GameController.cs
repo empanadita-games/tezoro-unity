@@ -28,13 +28,13 @@ public class GameController : MonoBehaviour
             ReactGetTezos (callAmount, callWalletAddress);
         #endif
         }
-        [DllImport("__Internal")]
-        private static extern void BuyHat ();
-        public void CallBuyHat () {
-        #if UNITY_WEBGL == true && UNITY_EDITOR == false
-            BuyHat ();
-        #endif
-        }
+        // [DllImport("__Internal")]
+        // private static extern void BuyHat ();
+        // public void CallBuyHat () {
+        // #if UNITY_WEBGL == true && UNITY_EDITOR == false
+        //     BuyHat ();
+        // #endif
+        // }
 
         //REACT -> UNITY
         //RECEIVE WALLET ADDRESS (ALSO CONFIRMATION OF SUCCESFUL SYNC)
@@ -111,12 +111,17 @@ public class GameController : MonoBehaviour
         
         //WEB REQUEST VERSION OF GETHAT
 
-        public void WebGetHat() => StartCoroutine(Coro_WebGetHat());
+        public void SendObjkt() => StartCoroutine(Coro_SendObjkt());
         
-        public IEnumerator Coro_WebGetHat()
+        public IEnumerator Coro_SendObjkt()
         {
             int n = UnityEngine.Random.Range(0, 4);
+            
+            Debug.Log("n: " + n);
+            Debug.Log("address: " + walletAddress);
 
+            if (HatController.instance!=null) HatController.instance.HighlightHat(n);
+            
             WWWForm form = new WWWForm();
             form.AddField("token_id", n.ToString());
             form.AddField("address", walletAddress);
@@ -148,6 +153,7 @@ public class GameController : MonoBehaviour
 
         private void Update()
         {
+            //Debug method for testing sync in Unity without web connectivity
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 #if UNITY_EDITOR == true

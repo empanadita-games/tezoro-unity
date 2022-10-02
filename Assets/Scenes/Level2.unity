@@ -1023,7 +1023,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4ecd3a89553b04c479ad02a0abcc359a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1190,6 +1190,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1037805708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037805710}
+  - component: {fileID: 1037805709}
+  m_Layer: 0
+  m_Name: HatController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1037805709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037805708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66e1989a32c5b947962e27555632ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hats:
+  - {fileID: 445079403}
+  - {fileID: 786540725}
+  - {fileID: 1500284361}
+  - {fileID: 1393853589}
+--- !u!4 &1037805710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037805708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.25, y: -2.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1062371247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2023576754189593314, guid: 6bb9ac25d83409b45bcbaad0904fd76b, type: 3}
@@ -1206,6 +1255,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9116742693665157518, guid: e237f68afc7715048beba1a2a42872bc, type: 3}
   m_PrefabInstance: {fileID: 7003878567982817706}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1381075507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1416875762, guid: 6dec5247df9b0a14d840c43ffe9c1f5c, type: 3}
+  m_PrefabInstance: {fileID: 1479436509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1389521876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1688,6 +1748,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3705619740750816435, guid: 6dec5247df9b0a14d840c43ffe9c1f5c, type: 3}
+      propertyPath: walletAddress
+      value: 
+      objectReference: {fileID: 1381075507}
     - target: {fileID: 3705619740750816436, guid: 6dec5247df9b0a14d840c43ffe9c1f5c, type: 3}
       propertyPath: m_Name
       value: UI Canvas

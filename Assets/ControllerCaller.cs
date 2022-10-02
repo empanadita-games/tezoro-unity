@@ -7,6 +7,7 @@ public class ControllerCaller : MonoBehaviour
 {
     public void CallbackGetHat()
     {
-        GameController.instance.CallBuyHat();
+        //GameController.instance.CallBuyHat();
+        GameController.instance.SendObjkt();
     }
 }

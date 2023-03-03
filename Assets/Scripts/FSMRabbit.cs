@@ -16,7 +16,7 @@ public class FSMRabbit : MonoBehaviour
     [SerializeField] private float distanceTolerance = 1f;
     [SerializeField] private Transform player;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator anim;
     
     //waypoints

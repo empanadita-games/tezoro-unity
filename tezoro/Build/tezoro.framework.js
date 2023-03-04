@@ -1167,29 +1167,29 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 5564696: function() {
+ 5564760: function() {
   Module["emscripten_get_now_backup"] = performance.now;
  },
- 5564751: function($0) {
+ 5564815: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 5564799: function($0) {
+ 5564863: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 5564847: function() {
+ 5564911: function() {
   performance.now = Module["emscripten_get_now_backup"];
  },
- 5564902: function() {
+ 5564966: function() {
   return Module.webglContextAttributes.premultipliedAlpha;
  },
- 5564963: function() {
+ 5565027: function() {
   return Module.webglContextAttributes.preserveDrawingBuffer;
  },
- 5565027: function() {
+ 5565091: function() {
   return Module.webglContextAttributes.powerPreference;
  }
 };
@@ -1291,6 +1291,10 @@ function stackTrace() {
  var js = jsStackTrace();
  if (Module["extraStackTrace"]) js += "\n" + Module["extraStackTrace"]();
  return demangleAll(js);
+}
+
+function _BuyHat() {
+ window.dispatchReactUnityEvent("BuyHat");
 }
 
 var JS_Accelerometer = null;
@@ -2994,10 +2998,6 @@ function _JsSwitchAccounts() {
 
 function _ReactGetTezos(amount, address) {
  window.dispatchReactUnityEvent("ReactGetTezos", amount, UTF8ToString(address));
-}
-
-function _TrySyncWallet() {
- window.dispatchReactUnityEvent("TrySyncWallet");
 }
 
 var ExceptionInfoAttrs = {
@@ -13912,6 +13912,7 @@ function intArrayFromString(stringy, dontAddNull, length) {
 }
 
 var asmLibraryArg = {
+ "BuyHat": _BuyHat,
  "JS_Accelerometer_IsRunning": _JS_Accelerometer_IsRunning,
  "JS_Accelerometer_Start": _JS_Accelerometer_Start,
  "JS_Accelerometer_Stop": _JS_Accelerometer_Stop,
@@ -13993,7 +13994,6 @@ var asmLibraryArg = {
  "JsSignPayload": _JsSignPayload,
  "JsSwitchAccounts": _JsSwitchAccounts,
  "ReactGetTezos": _ReactGetTezos,
- "TrySyncWallet": _TrySyncWallet,
  "__cxa_allocate_exception": ___cxa_allocate_exception,
  "__cxa_atexit": ___cxa_atexit,
  "__cxa_begin_catch": ___cxa_begin_catch,

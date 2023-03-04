@@ -7,20 +7,54 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using Random = System.Random;
+using BeaconSDK;
+using Netezos.Encoding;
+using TezosAPI;
 
 public class GameController : MonoBehaviour
 {
+
+    private const string networkName = "ghostnet";//"jakartanet";
+    private const string networkRPC = "https://rpc.ghostnet.teztnets.xyz";//"https://jakartanet.tezos.marigold.dev";
+    private const string indexerNode = "https://api.ghostnet.tzkt.io/v1/operations/{0}/status"; //"https://api.mainnet.tzkt.io/v1/operations/{transactionHash}/status";
+
+   private Tezos _tezos;
+
+    public string GetActiveAccountAddress()
+    {
+        return _tezos.GetActiveWalletAddress();
+    }
+
+    public BeaconMessageReceiver GetMessageReceiver()
+    {
+        return _tezos.MessageReceiver;
+    }
+
+    private void OnSync(string account)
+    {    
+            // change this to get address from account
+            walletAddress = GetActiveAccountAddress();
+            SetWallet(walletAddress);
+    }
+
+    public void CallTrySyncWallet()
+    {   
+         GetMessageReceiver().AccountConnected +=  OnSync;
+         _tezos.ConnectWallet();
+    }
+     
     // UNITY -> REACT 
     // SYNC
-    [DllImport("__Internal")]
-    private static extern void TrySyncWallet ();
-        public void CallTrySyncWallet () {
-        #if UNITY_WEBGL == true && UNITY_EDITOR == false
-            TrySyncWallet ();
-        #endif
-        }
+    // [DllImport("__Internal")]
+    // private static extern void TrySyncWallet ();
+    //     public void CallTrySyncWallet () {
+    //     #if UNITY_WEBGL == true && UNITY_EDITOR == false
+    //         TrySyncWallet ();
+    //     #endif
+    //     }
         //GET TEZOS REACT
         //This method was not used in the production version
+
     [DllImport("__Internal")]
     private static extern void ReactGetTezos (int amount, string walletAddress);
         public void CallGetTezos (int callAmount, string callWalletAddress) {
@@ -28,13 +62,13 @@ public class GameController : MonoBehaviour
             ReactGetTezos (callAmount, callWalletAddress);
         #endif
         }
-        // [DllImport("__Internal")]
-        // private static extern void BuyHat ();
-        // public void CallBuyHat () {
-        // #if UNITY_WEBGL == true && UNITY_EDITOR == false
-        //     BuyHat ();
-        // #endif
-        // }
+        [DllImport("__Internal")]
+        private static extern void BuyHat ();
+        public void CallBuyHat () {
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            BuyHat ();
+        #endif
+        }
 
         //REACT -> UNITY
         //RECEIVE WALLET ADDRESS (ALSO CONFIRMATION OF SUCCESFUL SYNC)
@@ -44,8 +78,8 @@ public class GameController : MonoBehaviour
 
         //THIS METHOD IS CALLED FROM REACT
         public void SetWallet (string address) {
-            Debug.Log ($"Sync Succesful. Address: {address}");
             walletAddress = address;
+            Debug.Log ($"Sync Succesful. Address: {walletAddress}");
             UIController.Instance.walletAddress.text = walletAddress;
             onWalletSynced.Invoke();
         }
@@ -58,7 +92,7 @@ public class GameController : MonoBehaviour
             else Destroy(this);
             DontDestroyOnLoad(this);
             DontDestroyOnLoad(gameObject);
-
+            _tezos = new Tezos(networkName, networkRPC, indexerNode);
             onWalletSynced.AddListener(() => { UIController.Instance.walletAddress.text = walletAddress; }
             );
         }
